@@ -1,0 +1,9 @@
+{
+  "gruvbox-material": { "branch": "master", "commit": "559b4a9abb6781699404dfd98fb7d6ec83113337" },
+  "heirline.nvim": { "branch": "master", "commit": "0d797435e54645a5f98bad7ad6046aac1ef95c1e" },
+  "indent-blankline.nvim": { "branch": "master", "commit": "18603eb949eba08300799f64027af11ef922283f" },
+  "lazy.nvim": { "branch": "main", "commit": "077102c5bfc578693f12377846d427f49bc50076" },
+  "rainbow-delimiters.nvim": { "branch": "master", "commit": "8f47c3d70286a85940cafe990a64b0eac1033671" },
+  "tmux-status.nvim": { "branch": "main", "commit": "cfa6442ef044c2cfec9228a609ba36bd34809503" },
+  "vim-illuminate": { "branch": "master", "commit": "5eeb7951fc630682c322e88a9bbdae5c224ff0aa" }
+}
