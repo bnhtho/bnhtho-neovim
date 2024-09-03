@@ -8,9 +8,6 @@ local options = vim.opt
 options.number = true
 options.showmode = false
 
-vim.schedule(function()
-    options.clipboard = 'unnamedplus'
-end)
 -- Ignore case and smartcase
 options.ignorecase = true
 options.smartcase = true
@@ -39,3 +36,8 @@ options.hlsearch = false
 options.wrap = true
 -- options
 options.cmdheight = 0
+
+
+-- //SECTION: Highlight 
+-- Set StatusLine transparent
+vim.cmd(':hi StatusLine ctermbg=NONE cterm=NONE')

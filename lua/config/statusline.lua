@@ -3,14 +3,12 @@
 -- https://github.com/serenevoid/nvim/blob/master/lua/void/statusline.lua
 -- Custom Statusline
 
-local git = require('config.git')
 local tmux_status = require('tmux-status')  -- Make sure tmux-status is properly required
-
+local diff = require('gitsigns')
 local function gen_section(items)
   local out = ""
   local bracket_left = " "
   local bracket_right = " "
-  
   for _, item in pairs(items) do
     if item ~= "" and item ~= nil then
       item = tostring(item)  -- Ensure item is a string
@@ -81,6 +79,36 @@ local function is_modified()
   return ""
 end
 
+-- Get Git diff information
+local function get_diff()
+  local git_info = vim.b.gitsigns_status_dict
+  if not git_info or git_info.head == "" then
+    return ""
+  end
+  local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
+  local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
+  local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
+  if git_info.added == 0 then
+    added = ""
+  end
+  if git_info.changed == 0 then
+    changed = ""
+  end
+  if git_info.removed == 0 then
+    removed = ""
+  end
+  return table.concat {
+     " ",
+     added,
+     changed,
+     removed,
+     " ",
+     "%#GitSignsAdd# ",
+     git_info.head,
+     " %#Normal#",
+  }
+end
+
 -- Whether the file is read-only
 local function is_readonly()
   if vim.bo.readonly then
@@ -138,13 +166,14 @@ function Status_line()
   return table.concat({
     gen_section({ get_mode_group_display_name(mg) }),
     " ",
-    gen_section({ git.get_branch() or "" }),
+    -- Git diff
+    gen_section({ get_diff() or "" }),
     "%=",
     gen_section({ setup_diagnostics() }),
     " ",
     -- tmux section
-    gen_section({ setup_tmux() }),
-    " ",
+    -- gen_section({ setup_tmux() }),
+    -- " ",
     gen_section({ vim.bo.filetype }),
     " ",
     gen_section({ "Ln %l, Col %c" }),
