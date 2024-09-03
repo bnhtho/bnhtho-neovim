@@ -1,6 +1,7 @@
 -- Colorscheme
 return {
     'sainnhe/gruvbox-material',
+    dependencies = {"nvim-tree/nvim-web-devicons"},
     lazy = false,
     priority = 1000,
     config = function()
