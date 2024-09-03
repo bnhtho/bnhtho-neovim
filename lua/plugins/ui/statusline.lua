@@ -8,6 +8,7 @@ return {
         -- Define your StatusLine component
         local StatusLine = {
             -- Add your custom statusline components here
+            -- asd
         }
 
         -- Define your WinBar component
