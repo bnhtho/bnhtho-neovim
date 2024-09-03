@@ -5,7 +5,6 @@ vim.g.loaded_netrw = 1
 require("config.lazy")
 require("config.options")
 require("config.autocmd")
--- Do something 
--- -- other
--- adadad
+
 require("config.statusline")
+require("config.lspserver")
