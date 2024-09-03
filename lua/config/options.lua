@@ -16,8 +16,8 @@ options.smartcase = true
 options.splitright = true
 options.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
-options.list = true
-options.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- options.list = true
+-- options.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Hide tildes (~)
 options.fillchars = {eob = " "}
 -- Preview substitutions live, as you type!
