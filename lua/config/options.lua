@@ -36,7 +36,7 @@ options.hlsearch = false
 options.wrap = true
 -- options
 options.cmdheight = 0
-
+options.swapfile = false
 
 -- //SECTION: Highlight 
 -- Set StatusLine transparent
