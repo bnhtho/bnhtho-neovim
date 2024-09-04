@@ -29,7 +29,9 @@ return {
                         "lua_ls", 
                         "rust_analyzer", 
                         "clangd",
-                        "pylsp"
+                        "pylsp",
+                        -- Markdown
+                        "marksman"
                     }
                 }
             )
@@ -55,6 +57,11 @@ return {
             }
             -- C++
             lspconfig.clangd.setup {
+                -- on_attach = on_attach,
+                capabilities = capabilities
+            }
+            -- Markdown
+            lspconfig.marksman.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities
             }

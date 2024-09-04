@@ -8,6 +8,7 @@ return {
         dependencies = {
             -- Sources
             "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
+            "kdheepak/cmp-latex-symbols",
             "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
             "hrsh7th/cmp-path", -- Path source for nvim-cmp
             "hrsh7th/cmp-cmdline", -- Cmdline source for nvim-cmp
@@ -76,11 +77,12 @@ return {
                 },
                 -- Source
                 sources = {
-                    { name = "luasnip", max_item_count = 3 },
-                    { name = "nvim_lsp", max_item_count = 5 },
-                    { name = "nvim_lua", max_item_count = 5 },
-                    { name = "buffer", max_item_count = 5, keyword_length = 3 },
-                    { name = "nvim_lsp_signature_help", max_item_count = 5 },
+                    { name = "luasnip"},
+                    { name = "nvim_lsp"},
+                    { name = "nvim_lua"},
+                    { name = "buffer", keyword_length = 3 },
+                    { name = "buffer", keyword_length = 3 },
+                    { name = "nvim_lsp_signature_help"},
                     {
                         name = "spell",
                         max_item_count = 5,
@@ -92,6 +94,12 @@ return {
                             end,
                         },
                     },
+                    {
+                        name = "latex_symbols",
+                        option = {
+                          strategy = 0, -- mixed
+                        },
+                      },
                 },
                 --
                 formatting = {
