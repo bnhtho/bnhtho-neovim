@@ -100,7 +100,6 @@ return {
                         local kind = vim_item.kind
                         vim_item.kind = " " .. (kind_icons[kind] or "?") .. ""
                         local source = entry.source.name
-                        vim_item.menu = "[" .. source .. "]"
     
                         return vim_item
                     end,
