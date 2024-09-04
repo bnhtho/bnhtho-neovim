@@ -3,28 +3,64 @@ return {
     -- Plugins
     {
         "yioneko/nvim-cmp",
-        branch = "perf", -- The main completion plugin
+        branch = "perf",
+        event = { "BufReadPre", "BufNewFile" }, -- The main completion plugin
         dependencies = {
             -- Sources
             "hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
             "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
             "hrsh7th/cmp-path", -- Path source for nvim-cmp
             "hrsh7th/cmp-cmdline", -- Cmdline source for nvim-cmp
-            "L3MON4D3/LuaSnip", -- Snippet engine
+            {
+                "L3MON4D3/LuaSnip",
+                dependencies = { "rafamadriz/friendly-snippets" },
+            }, -- Snippet engine
             "saadparwaiz1/cmp_luasnip", -- LuaSnip source for nvim-cmp
             "rafamadriz/friendly-snippets", -- Useful snippets
+            "hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
             -- Customize Appearance
             "onsails/lspkind.nvim"
         },
-        event = "VeryLazy",
         config = function()
+            -- Pre-setup
+            local kind_icons = {
+                Text = "󰉿",
+                Method = "󰆧",
+                Function = "󰊕",
+                Constructor = "",
+                Field = "󰜢",
+                Variable = "󰀫",
+                Class = "󰠱",
+                Interface = "",
+                Module = "",
+                Property = "󰜢",
+                Unit = "󰑭",
+                Value = "󰎠",
+                Enum = "",
+                Keyword = "󰌋",
+                Snippet = "",
+                Color = "󰏘",
+                File = "󰈙",
+                Reference = "󰈇",
+                Folder = "󰉋",
+                EnumMember = "",
+                Constant = "󰏿",
+                Struct = "󰙅",
+                Event = "",
+                Operator = "󰆕",
+                TypeParameter = "",
+            }
+            --
             local lspkind = require('lspkind')
             local cmp = require('cmp')
-
+            local cmplsp = require("cmp_nvim_lsp")
+            -- Setup cmplsp
+            require("luasnip.loaders.from_vscode").lazy_load()
+            cmplsp.setup()
             cmp.setup({
-                performance = {
-                    debounce = 0, -- default is 60ms
-                    throttle = 0 -- default is 30ms
+                preselect = false,
+                completion = {
+                    completeopt = "menu,menuone,preview,noselect",
                 },
                 snippet = {
                     expand = function(args)
@@ -38,26 +74,67 @@ return {
                     disallow_partial_matching = false,
                     disallow_prefix_unmatching = true
                 },
+                -- Source
                 sources = {
-                    { name = 'nvim_lsp', priority = 100, max_item_count = 15 },
-                    { name = 'luasnip', priority = 100, max_item_count = 15 },
-                    { name = 'buffer', priority = 50, keyword_length = 3, max_item_count = 15 }
-                },
-                completion = {
-                    completeopt = 'menu,menuone,noinsert,noselect'
-                },
-                window = {
-                    completion = {
-                      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                      col_offset = -3,
-                      side_padding = 0,
+                    { name = "luasnip", max_item_count = 3 },
+                    { name = "nvim_lsp", max_item_count = 5 },
+                    { name = "nvim_lua", max_item_count = 5 },
+                    { name = "buffer", max_item_count = 5, keyword_length = 3 },
+                    { name = "nvim_lsp_signature_help", max_item_count = 5 },
+                    {
+                        name = "spell",
+                        max_item_count = 5,
+                        keyword_length = 3,
+                        option = {
+                            keep_all_entries = false,
+                            enable_in_context = function()
+                                return true
+                            end,
+                        },
                     },
-                  },
+                },
+                --
                 formatting = {
-                    format = lspkind.cmp_format({
-                        mode = 'symbol',
-                    })
-                }
+                    fields = { "abbr", "kind", "menu" },
+                    format = function(entry, vim_item)
+                        local kind = vim_item.kind
+                        vim_item.kind = " " .. (kind_icons[kind] or "?") .. ""
+                        local source = entry.source.name
+                        vim_item.menu = "[" .. source .. "]"
+    
+                        return vim_item
+                    end,
+                },
+                -- Performance
+                performance = {
+                    max_view_entries = 20,
+                },
+                -- Mapping
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }), -- no not select first item
+                    ["<C-e>"] = cmp.mapping.abort(),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item()
+                        elseif luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                }),
             })
         end
     }
