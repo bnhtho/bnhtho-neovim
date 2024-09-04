@@ -46,6 +46,13 @@ return {
             lspconfig.pylsp.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities,
+                settings = {
+                    pylsp = {
+                      plugins = {
+                        pycodestyle = { maxLineLength = 100 },
+                      },
+                    },
+                  },
                 filetypes= {"python"}
             }
             -- C++
