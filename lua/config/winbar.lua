@@ -1,48 +1,4 @@
--- Show only path file on smaller screen
-  local winbar_filetype_exclude = {
-    "help",
-    "startify",
-    "dashboard",
-    "packer",
-    "neogitstatus",
-    "NvimTree",
-    "Trouble",
-    "alpha",
-    "lir",
-    "Outline",
-    "spectre_panel",
-    "toggleterm",
-}
 
--- #4A3E4B
-vim.api.nvim_set_hl(0, 'WinBarPath', { bg = '#4A3E4B', fg = '#C1ADC4' })
-vim.api.nvim_set_hl(0, 'WinBarModified', { bg = '#dedede', fg = '#ff3838' })
-
-function show_path()
-
-    if vim.tbl_contains(winbar_filetype_exclude, vim.bo.filetype) then
-        return ""
-    end
-
-    local file_path = vim.api.nvim_eval_statusline('%F', {}).str
-    -- local modified = vim.api.nvim_eval_statusline('%M', {}).str == '+' and '⊚' or ''
-    local modified = vim.api.nvim_eval_statusline('%m', {}).str
-    local buffer_number = vim.api.nvim_eval_statusline('%n', {}).str
-    local last_change = vim.fn.strftime('%a, %b %d %Y - %H:%M', vim.fn.getftime(vim.fn.expand('%')))
-
-    file_path = file_path:gsub('/', ' ➤ ')
-    file_path = file_path:gsub('~', ' $HOME')
-
-    return '%#WinBarPath#'
-     .. ' [' .. buffer_number .. '] '
-     .. file_path .. ' '
-     .. '%*'
-     -- .. '%#WinBarModified#'
-     .. ' ' .. modified
-     .. '%*'
-     .. 'Modified: ' .. last_change
-end
-  
 -- Show tabline on full screen
 function custom_tabline()
     local buffers = vim.fn.getbufinfo({buflisted = 1})
@@ -51,15 +7,21 @@ function custom_tabline()
   
     for _, buf in ipairs(buffers) do
       local bufname = vim.fn.fnamemodify(buf.name, ":t")
+      -- i stuck here. Want to get icon before file
+      local icon, icon_color = require("nvim-web-devicons").get_icon(bufname, vim.bo[buf.bufnr].filetype, { default = true })
+        icon = icon or ''
+        local function icons()
+            return icon .. " "
+        end
       if bufname == "" then
         bufname = "[No Name]"
       end
-  
+
       -- Style the active buffer with underline
       if buf.bufnr == current_buf then
-        tabline = tabline .. "%#TabLineActive# " .. bufname .. " %#TabLine#"
+        tabline = tabline .. "%#TabLineActive# " ..icons() ..bufname.. " %#TabLine#"
       else
-        tabline = tabline .. "%#TabLineInactive# " .. bufname .. " %#TabLine#"
+        tabline = tabline .. "%#TabLineInActive# " ..icons() ..bufname.. " %#TabLine#"
       end
     end
   
@@ -80,10 +42,10 @@ vim.cmd([[
     highlight! TabLineSel ctermbg=blue ctermfg=white
     
     " Thiết lập màu nền và màu chữ cho tab đang hoạt động (tab hiện tại)
-    highlight! TabLineActive cterm=underline gui = underline
+    highlight! TabLineActive gui = underline
     
     " Thiết lập màu nền và màu chữ cho tab không hoạt động (tab không hiện tại)
-    highlight! TabLineInactive ctermbg=NONE ctermfg=white
+    highlight! TabLineInactive ctermbg=NONE ctermfg=darkgray
   ]])
 ---
 vim.api.nvim_create_autocmd(
@@ -107,4 +69,4 @@ vim.api.nvim_create_autocmd(
 )
 --   -- Keybinding to switch buffers using <Tab>
   vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
-  vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
+  -- vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })

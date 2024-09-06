@@ -31,5 +31,5 @@ return
       end,
       -- Optional: Lazy load Incline
       event = 'VeryLazy',
-    },
+}
 }

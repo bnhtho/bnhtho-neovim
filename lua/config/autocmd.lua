@@ -8,6 +8,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
       vim.highlight.on_yank()
     end,
   })
-
-  local wr_group = vim.api.nvim_create_augroup('WinResize', { clear = true })
-
