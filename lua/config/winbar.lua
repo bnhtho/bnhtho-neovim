@@ -59,6 +59,7 @@ vim.api.nvim_create_autocmd(
            -- if screen is 51(smallest), set windows
           if width == 51  then 
             vim.o.showtabline = 0
+           
           else
             -- When screen is big
             vim.o.showtabline = 3

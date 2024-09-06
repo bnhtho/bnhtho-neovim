@@ -174,8 +174,7 @@ function Status_line()
     -- tmux section
     -- gen_section({ setup_tmux() }),
     -- " ",
-    gen_section({ vim.bo.filetype }),
-    " ",
+   
     gen_section({ "Ln %l, Col %c" }),
   })
 end

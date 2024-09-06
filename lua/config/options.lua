@@ -59,9 +59,4 @@ vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg='NONE', fg='#D4D4D4' })
 vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link='CmpItemKindKeyword' })
 vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
 
--- Neotree : normal color
--- Ref:https://github.com/sainnhe/gruvbox-material/issues/182
-vim.cmd([[
-              highlight! link NeoTreeNormal Normal
-              highlight! link NeoTreeEndOfBuffer Normal
-]])
+vim.cmd(':hi TelescopeSelection ctermbg=NONE cterm=NONE')
