@@ -37,7 +37,7 @@ options.wrap = true
 -- options
 options.cmdheight = 0
 options.swapfile = false
-
+-- options.showtabline = 2
 -- //SECTION: Highlight 
 -- Set StatusLine transparent
 vim.cmd(':hi StatusLine ctermbg=NONE cterm=NONE')
