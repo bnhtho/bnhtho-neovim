@@ -55,6 +55,7 @@ return {
             local lspkind = require('lspkind')
             local cmp = require('cmp')
             local cmplsp = require("cmp_nvim_lsp")
+            local luasnip = require("luasnip")
             -- Setup cmplsp
             require("luasnip.loaders.from_vscode").lazy_load()
             cmplsp.setup()
@@ -80,8 +81,7 @@ return {
                     { name = "luasnip"},
                     { name = "nvim_lsp"},
                     { name = "nvim_lua"},
-                    { name = "buffer", keyword_length = 3 },
-                    { name = "buffer", keyword_length = 3 },
+                    { name = "buffer"},
                     { name = "nvim_lsp_signature_help"},
                     {
                         name = "spell",
