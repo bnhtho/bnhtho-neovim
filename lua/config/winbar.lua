@@ -47,27 +47,7 @@ vim.cmd([[
     " Thiết lập màu nền và màu chữ cho tab không hoạt động (tab không hiện tại)
     highlight! TabLineInactive ctermbg=NONE ctermfg=darkgray
   ]])
----
-vim.api.nvim_create_autocmd(
-    {"BufAdd", "BufDelete","VimResized"},
-    {
-        group = wr_group,
-        pattern = '*',
-        callback = function()
 
-          local width = vim.api.nvim_win_get_width(0)
-           -- if screen is 51(smallest), set windows
-          if width == 51  then 
-            vim.o.showtabline = 0
-           
-          else
-            -- When screen is big
-            vim.o.showtabline = 3
-            custom_tabline()
-          end
-        end
-    }
-)
 --   -- Keybinding to switch buffers using <Tab>
   vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
   -- vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
