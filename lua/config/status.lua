@@ -2,6 +2,8 @@
 -- Ref:
 -- https://github.com/serenevoid/nvim/blob/master/lua/void/statusline.lua
 -- Custom Statusline
+-- Statusline: Bottom
+------------------------//SECTION: Global StatusLine --------------------------
 
 local tmux_status = require('tmux-status')  -- Make sure tmux-status is properly required
 local diff = require('gitsigns')
@@ -180,4 +182,42 @@ function Status_line()
 end
 
 vim.o.statusline = "%!luaeval('Status_line()')"
-vim.o.laststatus = 3
+-----------------------------------------------------------------
+
+----------------------- //SECTION: Winbar -------------------
+-- Show tabline on full screen
+function custom_tabline()
+  local buffers = vim.fn.getbufinfo({buflisted = 1})
+  local current_buf = vim.fn.bufnr('%') -- Get the current buffer number
+  local tabline = ""
+
+  for _, buf in ipairs(buffers) do
+    local bufname = vim.fn.fnamemodify(buf.name, ":t")
+    -- i stuck here. Want to get icon before file
+    local icon, icon_color = require("nvim-web-devicons").get_icon(bufname, vim.bo[buf.bufnr].filetype, { default = true })
+      icon = icon or ''
+      local function icons()
+          return icon .. " "
+      end
+    if bufname == "" then
+      return ""
+    end
+
+    -- Style the active buffer with underline
+    if buf.bufnr == current_buf then
+      tabline = tabline .. "%#TabLineActive# " ..icons() ..bufname.. " %#TabLine#"
+    else
+      tabline = tabline .. "%#TabLineInActive# " ..icons() ..bufname.. " %#TabLine#"
+    end
+  end
+
+  return tabline
+end
+
+-- Set the custom tabline
+vim.o.tabline = "%!v:lua.custom_tabline()"
+
+
+--   -- Keybinding to switch buffers using <Tab>
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+-- vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })
