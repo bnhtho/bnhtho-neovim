@@ -12,8 +12,8 @@ keymap.set('n', '<leader>k', '<C-w>k')
 keymap.set('n', '<leader>l', '<C-w>l')
 
 -- Split windows
-keymap.set('n', 'ss', ':split<cr><C-w>w')
-keymap.set('n', 'sv', ':vsplit<cr><C-w>w')
+keymap.set('n', 'sj', ':split<cr><C-w>w')
+keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
 
 -- Next/Prev tab page
 keymap.set('n', '<leader>n', ':BufferLineCycleNext<CR>')

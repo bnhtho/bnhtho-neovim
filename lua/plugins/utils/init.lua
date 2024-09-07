@@ -12,5 +12,11 @@ return
       end,
       -- Optional: Lazy load Incline
       event = 'VeryLazy',
-}
+  },
+  {
+    -- picker
+    require("window-picker").setup({
+      hint = 'floating-big-letter',
+    }),
+  }
 }

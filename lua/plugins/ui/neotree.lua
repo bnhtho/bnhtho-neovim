@@ -9,7 +9,9 @@ return {
       'saifulapm/neotree-file-nesting-config',
       "s1n7ax/nvim-window-picker",
     },
+    
     opts = {
+      
       -- Windows Mapping
       window = {
         mappings = {
@@ -18,8 +20,8 @@ return {
             vim.cmd("Neotree reveal")
           end,
           -- Use window picker
-          ["s"] = "split_with_window_picker",
-          ["v"] = "vsplit_with_window_picker",
+          ["J"] = "open_split",
+          ["L"] = "open_vsplit",
         },
       },
       -- recommanded config for better UI
