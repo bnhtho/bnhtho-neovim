@@ -214,10 +214,4 @@ function custom_tabline()
   return tabline
 end
 
--- Set the custom tabline
 vim.o.tabline = "%!v:lua.custom_tabline()"
-
-
---   -- Keybinding to switch buffers using <Tab>
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
--- vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { silent = true })

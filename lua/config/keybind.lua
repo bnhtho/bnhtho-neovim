@@ -1,10 +1,9 @@
 -- /lua/map.lua
 
 local keymap = vim.keymap
-
 keymap.set('n', '<leader>a', 'gg<S-v>G')
 -- Toggle NeoTree sidebar
-keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
+vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 
 -- Moving around windows using s + h,j,k,l
 keymap.set('n', '<leader>h', '<C-w>h')
@@ -38,3 +37,7 @@ keymap.set({'n', 't'}, '<C-h>', '<CMD>NavigatorLeft<CR>')
 keymap.set({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
 keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
 keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
+
+
+-- Tab
+keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
