@@ -2,8 +2,7 @@
 
 local keymap = vim.keymap
 keymap.set('n', '<leader>a', 'gg<S-v>G')
--- Toggle NeoTree sidebar
-vim.keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
+keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
 
 -- Moving around windows using s + h,j,k,l
 keymap.set('n', '<leader>h', '<C-w>h')
@@ -41,3 +40,6 @@ keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
 -- Tab
 keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+
+keymap.set("n", '<C-d>', '<Cmd>copy.<Cr>')
+keymap.set('x', '<C-d>', ':copy.-1<Cr>gv')
