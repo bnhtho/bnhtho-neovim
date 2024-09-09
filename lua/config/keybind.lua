@@ -48,7 +48,7 @@ end
 -- Function to toggle FZF find files using Snap with centered screen
 function toggle_find_files()
     require "snap".run {
-        prompt = '>>',
+        prompt = '🔎',
         -- Set layout to center the Snap window
         layout = function()
             local lines = vim.api.nvim_get_option("lines")
@@ -74,7 +74,7 @@ function toggle_live_grep()
             local lines = vim.api.nvim_get_option("lines")
             local columns = vim.api.nvim_get_option("columns")
             local height = math.floor(lines * 0.5)
-            local width = math.floor(columns * 0.7)
+            local width = math.floor(columns * 0.8)
             local row = math.floor((lines - height) / 2)
             local col = math.floor((columns - width) / 2)
             return {col = col, row = row, height = height, width = width}
