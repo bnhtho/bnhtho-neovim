@@ -7,6 +7,8 @@ return{
     "nvim-tree/nvim-web-devicons", -- optional dependency
   },
   opts = {
+    create_autocmd = false,
     -- configurations go here
   },
+
 }

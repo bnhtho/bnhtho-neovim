@@ -28,3 +28,4 @@ options.laststatus = 3
 options.swapfile = false
 
 vim.opt.termguicolors = true
+vim.opt.updatetime = 200
