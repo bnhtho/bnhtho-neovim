@@ -2,7 +2,7 @@
 
 local keymap = vim.keymap
 keymap.set('n', '<leader>a', 'gg<S-v>G')
-keymap.set('n', '<C-b>', '<Cmd>Neotree toggle<CR>')
+keymap.set('n', '<C-t>', '<Cmd>:Neotree toggle show<CR>')
 
 -- Moving around windows using s + h,j,k,l
 keymap.set('n', '<leader>h', '<C-w>h')
@@ -17,11 +17,6 @@ keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
 -- Next/Prev tab page
 keymap.set('n', '<leader>n', ':BufferLineCycleNext<CR>')
 keymap.set('n', '<leader>b', ':BufferLineCyclePrev<CR>')
-
--- Close all tabs
-keymap.set('n', '<leader>ta', [[:tabedit<cr>:BufferLineCloseLeft<cr>:BufferLineCloseRight<cr>]])
--- Keep current tab and close the others
-keymap.set('n', '<leader>to', [[:BufferLineCloseLeft<cr>:BufferLineCloseRight<cr>]])
 
 -- Save file
 keymap.set('n', '<C-s>', ':w<cr>')
@@ -40,6 +35,6 @@ keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
 -- Tab
 keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
-
-keymap.set("n", '<C-d>', '<Cmd>copy.<Cr>')
+-- 
+keymap.set("n", 'D', '<Cmd>copy.<Cr>')
 keymap.set('x', '<C-d>', ':copy.-1<Cr>gv')

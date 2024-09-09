@@ -1,8 +1,7 @@
 -- author: thohnb
 -- Highlight theme
 -- //SECTION: Highlight 
--- Set StatusLine transparent
-vim.cmd(':hi StatusLine ctermbg=NONE cterm=NONE')
+
 -- CMP
 -- gray
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg='NONE', strikethrough=true, fg='#808080' })
@@ -27,22 +26,21 @@ vim.cmd([[
               highlight! link NeoTreeNormal Normal
               highlight! link NeoTreeEndOfBuffer Normal
 ]])
+-- Tabline
+-- Set highlight for TabLine
+vim.api.nvim_set_hl(0, 'TabLine', { bg = 'NONE', fg = 'NONE' })
+-- Set background color for the area with no tabs
+vim.api.nvim_set_hl(0, 'TabLineFill', { bg = 'NONE', fg = 'NONE' })
+-- Set background and text color for the selected (current) tab
+vim.api.nvim_set_hl(0, 'TabLineSel', { bg = 'NONE', fg = 'NONE' })
+-- Set underline for the active tab
+vim.api.nvim_set_hl(0, 'TabLineActive', { underline = true })
+-- Set background and text color for inactive tabs
+vim.api.nvim_set_hl(0, 'TabLineInactive', { bg = 'NONE', fg = 'darkgray' })
 
+-- Status Bar
+vim.api.nvim_set_hl(0, 'ModeMsg', { bg = 'NONE', fg = 'NONE' })
 
--- Định nghĩa các nhóm highlight với màu sắc đã cập nhật
-vim.cmd([[
-  " Thiết lập màu nền và màu chữ cho TabLine tổng quát
-  highlight! TabLine ctermbg=none ctermfg=none
-  
-  " Thiết lập màu nền cho không gian không có tab (nơi không có tab hiển thị)
-  highlight! TabLineFill ctermbg=none ctermfg=none
-  
-  " Thiết lập màu nền và màu chữ cho tab đang được chọn (tab hiện tại)
-  highlight! TabLineSel ctermbg=blue ctermfg=white
-  
-  " Thiết lập màu nền và màu chữ cho tab đang hoạt động (tab hiện tại)
-  highlight! TabLineActive gui = underline
-  
-  " Thiết lập màu nền và màu chữ cho tab không hoạt động (tab không hiện tại)
-  highlight! TabLineInactive ctermbg=NONE ctermfg=darkgray
-]])
+-- Set StatusLine transparent
+-- vim.cmd(':hi StatusLine ctermbg=NONE cterm=NONE')
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', fg = 'NONE' })

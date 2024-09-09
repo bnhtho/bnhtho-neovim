@@ -27,3 +27,6 @@ options.showtabline = 3
 options.laststatus = 3
 -- Disable swapsize
 options.swapfile = false
+
+
+-- Định nghĩa các nhóm highlight với màu sắc đã cập nhật

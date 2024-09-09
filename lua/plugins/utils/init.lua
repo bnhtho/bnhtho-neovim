@@ -13,8 +13,4 @@ return
       -- Optional: Lazy load Incline
       event = 'VeryLazy',
   },
-  -- mini duplicate
-  {
-    
-  }
 }
