@@ -15,6 +15,9 @@ return
   },
   {
     "camspiers/snap",
+    dependencies = {
+      "mfussenegger/nvim-fzy"
+    },
   opt={}
   }
 }

@@ -174,7 +174,7 @@ function Status_line()
     gen_section({ setup_diagnostics() }),
     " ",
     -- tmux section
-    -- gen_section({ setup_tmux() }),
+    gen_section({ setup_tmux() }),
     -- " ",
    
     gen_section({ "Ln %l, Col %c" }),

@@ -19,7 +19,6 @@ options.scrolloff = 10
 -- popup whichkey sooner
 -- Disable hlsearch
 options.hlsearch = false
--- Word Wrap
 options.wrap = true
 -- Gui 
 options.cmdheight = 0
