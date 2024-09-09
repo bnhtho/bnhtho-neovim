@@ -42,6 +42,11 @@ return {
             require('cmp_nvim_lsp').default_capabilities()
           )
           capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+          vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+            vim.lsp.diagnostic.on_publish_diagnostics, {
+              update_in_insert = true,
+            }
+          )
             -- Setup LSP.
             -- You can add more LSP servers here
             -- Python
