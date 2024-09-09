@@ -13,4 +13,8 @@ return
       -- Optional: Lazy load Incline
       event = 'VeryLazy',
   },
+  {
+    "camspiers/snap",
+  opt={}
+  }
 }

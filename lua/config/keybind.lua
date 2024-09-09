@@ -1,6 +1,7 @@
 -- /lua/map.lua
 
 local keymap = vim.keymap
+local snap = require("snap")
 keymap.set('n', '<leader>a', 'gg<S-v>G')
 keymap.set('n', '<C-t>', '<Cmd>:Neotree toggle show<CR>')
 
@@ -38,3 +39,35 @@ keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
 -- 
 keymap.set("n", 'D', '<Cmd>copy.<Cr>')
 keymap.set('x', '<C-d>', ':copy.-1<Cr>gv')
+
+
+if vim.o.wrap then
+    keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { expr = true })
+    keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { expr = true })
+  end
+
+-- Function to toggle FZF find files using Snap
+function toggle_find_files()
+    require'snap'.run {
+      producer = require'snap'.get'consumer.fzf'(require'snap'.get'producer.ripgrep.file'),
+      select = require'snap'.get'select.file'.select,
+      multiselect = require'snap'.get'select.file'.multiselect,
+      views = {require'snap'.get'preview.file'}
+    }
+  end
+  
+  -- Function to toggle live grep using Snap
+  function toggle_live_grep()
+    require'snap'.run {
+      producer = require'snap'.get'producer.ripgrep.vimgrep',
+      select = require'snap'.get'select.vimgrep'.select,
+      multiselect = require'snap'.get'select.vimgrep'.multiselect,
+      views = {require'snap'.get'preview.vimgrep'}
+    }
+  end
+
+  -- Set keybind to toggle FZF find files
+vim.api.nvim_set_keymap('n', '<leader>f', ':lua toggle_find_files()<CR>', { noremap = true, silent = true })
+
+-- Optional: Set keybind to toggle live grep
+vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { noremap = true, silent = true })
