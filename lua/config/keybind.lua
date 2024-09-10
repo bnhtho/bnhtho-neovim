@@ -83,6 +83,8 @@ function toggle_live_grep()
     }
 end
 
+
+--
 -- Keybindings
 vim.api.nvim_set_keymap("n", "<leader>f", ":lua toggle_find_files()<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<leader>g", ":lua toggle_live_grep()<CR>", {noremap = true, silent = true})

@@ -39,6 +39,7 @@ return
     opts = {
     }
    },
+   
    -- Outline nvim
    {
     "hedyhli/outline.nvim",

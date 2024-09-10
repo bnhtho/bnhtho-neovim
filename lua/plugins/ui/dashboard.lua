@@ -37,17 +37,15 @@ return
     -- Body
     center = {
       {
-        icon = ' ',
         icon_hl = 'Title',
-        desc = 'Find File - [Space-f]',
+        desc = 'Find File',
         desc_hl = 'String',
         key_hl = 'Number',
         action = ':lua toggle_find_files()'
       },
       {
-        icon = ' ',
         icon_hl = 'Title',
-        desc = 'Live Search - [Space-g]',
+        desc = 'Live Search',
         desc_hl = 'String',
         key_format = ' %s', -- remove default surrounding `[]`
         action = ':lua toggle_live_grep()'
