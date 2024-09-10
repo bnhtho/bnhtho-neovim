@@ -2,4 +2,3 @@
 
 This is my readme for my personal neovim configs
 
-
