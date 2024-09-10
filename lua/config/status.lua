@@ -187,31 +187,37 @@ vim.o.statusline = "%!luaeval('Status_line()')"
 ----------------------- //SECTION: Winbar -------------------
 -- Show tabline on full screen
 function custom_tabline()
+  -- Get the list of listed buffers
   local buffers = vim.fn.getbufinfo({buflisted = 1})
-  local current_buf = vim.fn.bufnr('%') -- Get the current buffer number
+  -- Get the current buffer number
+  local current_buf = vim.fn.bufnr('%')
   local tabline = ""
+  -- print(#buffers)
+  -- Check if there are no buffers; if so, switch to MiniStarter
 
   for _, buf in ipairs(buffers) do
     local bufname = vim.fn.fnamemodify(buf.name, ":t")
-    -- i stuck here. Want to get icon before file
+    -- Get icon before file name
     local icon, icon_color = require("nvim-web-devicons").get_icon(bufname, vim.bo[buf.bufnr].filetype, { default = true })
-      icon = icon or ''
-      local function icons()
-          return icon .. " "
-      end
+    icon = icon or ''
+    local function icons()
+      return icon .. " "
+    end
+    
+  
+    -- Style the active buffer with underline
     if bufname == "" then
       return ""
     end
-
-    -- Style the active buffer with underline
     if buf.bufnr == current_buf then
-      tabline = tabline .. "%#TabLineActive# " ..icons() ..bufname.. " %#TabLine#"
+      tabline = tabline .. "%#TabLineActive# " .. icons() .. bufname .. " %#TabLine#"
     else
-      tabline = tabline .. "%#TabLineInActive# " ..icons() ..bufname.. " %#TabLine#"
+      tabline = tabline .. "%#TabLineInActive# " .. icons() .. bufname .. " %#TabLine#"
     end
   end
 
   return tabline
 end
 
+-- Set the tabline to use the custom function
 vim.o.tabline = "%!v:lua.custom_tabline()"

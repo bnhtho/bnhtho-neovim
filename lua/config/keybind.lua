@@ -15,10 +15,6 @@ keymap.set("n", "<leader>l", "<C-w>l")
 keymap.set("n", "sj", ":split<cr><C-w>w")
 keymap.set("n", "sl", ":vsplit<cr><C-w>w")
 
--- Next/Prev tab page
-keymap.set("n", "<leader>n", ":BufferLineCycleNext<CR>")
-keymap.set("n", "<leader>b", ":BufferLineCyclePrev<CR>")
-
 -- Save file
 keymap.set("n", "<C-s>", ":w<cr>")
 -- do somthing else
@@ -35,6 +31,7 @@ keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 
 -- Tab
 keymap.set("n", "<Tab>", ":bnext<CR>", {silent = true})
+keymap.set("n","<leader>w",":Bdelete<CR>")
 --
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
