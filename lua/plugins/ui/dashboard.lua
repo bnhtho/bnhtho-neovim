@@ -27,7 +27,7 @@ local header_content = {
 	[[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
 	[[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
 	[[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
-	[[                     -thohnb-                       ]],
+	[[                     -Neovim btw-                   ]],
 	[[                                                    ]],
 }
 
@@ -41,23 +41,7 @@ return
   config = {
     header = center_header(header_content),
     -- Body
-    center = {
-      {
-        icon_hl = 'Title',
-        desc = 'Find File',
-        desc_hl = 'String',
-        key_hl = 'Number',
-        action = ':lua toggle_find_files()'
-      },
-      {
-        icon_hl = 'Title',
-        desc = 'Live Search',
-        desc_hl = 'String',
-        key_format = ' %s', -- remove default surrounding `[]`
-        action = ':lua toggle_live_grep()'
-      },
-
-    },
+    center = {{desc=""}},
     footer = {}  --your footer
   }
       }    

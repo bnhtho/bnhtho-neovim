@@ -27,19 +27,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   })
 
 
-  vim.api.nvim_create_augroup("alpha_on_empty", { clear = true })
-vim.api.nvim_create_autocmd("User", {
-	pattern = "BDeletePre *",
-	group = "alpha_on_empty",
-	callback = function()
-		local bufnr = vim.api.nvim_get_current_buf()
-		local name = vim.api.nvim_buf_get_name(bufnr)
-
-		if name == "" then
-      vim.cmd("Dashboard")
-		end
-	end,
-})
 
 -- Create an augroup named 'numbertoggle' and clear it if it already exists
 vim.api.nvim_create_augroup('numbertoggle', { clear = true })
@@ -63,5 +50,34 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave'
     if vim.wo.number then
       vim.wo.relativenumber = false
     end
+  end,
+})
+
+-- Cusror
+local function hide_cursor()
+  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+  hl.blend = 100
+  vim.api.nvim_set_hl(0, 'Cursor', hl)
+  vim.opt.guicursor:append('a:Cursor/lCursor')
+end
+-- hide cursor
+local function show_cursor()
+  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
+  hl.blend = 0
+  vim.api.nvim_set_hl(0, 'Cursor', hl)
+  vim.opt.guicursor:remove('a:Cursor/lCursor')
+end
+-- 
+-- CursorMoved
+vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorHold'}, {
+  group = 'numbertoggle',
+  pattern = '*',
+  callback = function()
+    if vim.bo.filetype == "dashboard" then
+      hide_cursor()
+    else
+      show_cursor()
+    end
+
   end,
 })

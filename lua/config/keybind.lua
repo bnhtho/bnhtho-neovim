@@ -3,7 +3,7 @@
 local keymap = vim.keymap
 local snap = require("snap")
 keymap.set("n", "<leader>a", "gg<S-v>G")
-keymap.set("n", "<leader>t", "<Cmd>:Neotree toggle show<CR>")
+keymap.set("n", "<leader>t", "<Cmd>:Neotree toggle<CR>")
 
 -- Moving around windows using s + h,j,k,l
 keymap.set("n", "<leader>h", "<C-w>h")
