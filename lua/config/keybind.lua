@@ -86,5 +86,8 @@ end
 
 --
 -- Keybindings
-vim.api.nvim_set_keymap("n", "<leader>f", ":lua toggle_find_files()<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<leader>g", ":lua toggle_live_grep()<CR>", {noremap = true, silent = true})
+keymap.set("n", "<leader>f", ":lua toggle_find_files()<CR>", {noremap = true, silent = true})
+keymap.set("n", "<leader>g", ":lua toggle_live_grep()<CR>", {noremap = true, silent = true})
+-- Git: Toggle lazygit
+keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", {noremap = true, silent = true})
+keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", {noremap = true, silent = true})

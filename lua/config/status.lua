@@ -3,17 +3,44 @@
 -- https://github.com/serenevoid/nvim/blob/master/lua/void/statusline.lua
 -- Custom Statusline
 -- Statusline: Bottom
-------------------------//SECTION: Global StatusLine --------------------------
+------------------------//SECTION: Color Definitions --------------------------
 
-local tmux_status = require('tmux-status')  -- Make sure tmux-status is properly required
+-- Gruvbox color palette
+local colors = {
+  fg1    = '#282828',  -- Dark background
+  color2 = '#504945',  -- Light grey
+  fg2    = '#ddc7a1',  -- Light foreground
+  color3 = '#32302f',  -- Medium dark background
+  color4 = '#a89984',  -- Beige
+  color5 = '#7daea3',  -- Aqua green
+  color6 = '#a9b665',  -- Green
+  color7 = '#d8a657',  -- Yellow
+  color8 = '#d3869b',  -- Pink
+  color9 = '#ea6962',  -- Red
+}
+
+local mode_colors = {
+  Normal = colors.color4,
+  Insert = colors.color6,
+  Visual = colors.color9,
+  Replace = colors.color7,
+  Command = colors.color5,
+  Terminal = colors.color8,
+}
+
+------------------------//SECTION: Statusline Functions --------------------------
+
+local tmux_status = require('tmux-status')
 local diff = require('gitsigns')
+
+-- Generates a section of the statusline
 local function gen_section(items)
   local out = ""
   local bracket_left = " "
   local bracket_right = " "
   for _, item in pairs(items) do
     if item ~= "" and item ~= nil then
-      item = tostring(item)  -- Ensure item is a string
+      item = tostring(item)
       if out == "" then
         out = item
       else
@@ -24,53 +51,30 @@ local function gen_section(items)
       bracket_right = ""
     end
   end
-  
   return bracket_left .. out .. bracket_right
 end
 
--- Sensibly group the vim modes
+-- Maps vim modes to user-friendly names
 local function get_mode_group(m)
   local mode_groups = {
     n = "Normal",
-    no = "Nop",
-    nov = "Nop",
-    noV = "Nop",
-    ["noCTRL-V"] = "Nop",
-    niI = "Normal",
-    niR = "Normal",
-    niV = "Normal",
     v = "Visual",
     V = "Visual",
     ["CTRL-V"] = "Visual",
-    s = "Select",
-    S = "Select",
-    ["CTRL-S"] = "Select",
     i = "Insert",
-    ic = "Insert",
-    ix = "Insert",
     R = "Replace",
-    Rc = "Replace",
-    Rv = "Replace",
-    Rx = "Replace",
     c = "Command",
-    cv = "Command",
-    ce = "Command",
-    r = "Prompt",
-    rm = "Prompt",
-    ["r?"] = "Prompt",
-    ["!"] = "Shell",
     t = "Terminal",
-    ["null"] = "None",
   }
   return mode_groups[m] or "None"
 end
 
--- Get the display name for the group
+-- Display name for the mode group, formatted
 local function get_mode_group_display_name(mg)
   return mg:upper()
 end
 
--- Whether the file has been modified
+-- Checks if the file has been modified
 local function is_modified()
   if vim.bo.modified then
     if vim.bo.readonly then
@@ -81,7 +85,7 @@ local function is_modified()
   return ""
 end
 
--- Get Git diff information
+-- Retrieves git diff information
 local function get_diff()
   local git_info = vim.b.gitsigns_status_dict
   if not git_info or git_info.head == "" then
@@ -90,28 +94,19 @@ local function get_diff()
   local added = git_info.added and ("%#GitSignsAdd#+" .. git_info.added .. " ") or ""
   local changed = git_info.changed and ("%#GitSignsChange#~" .. git_info.changed .. " ") or ""
   local removed = git_info.removed and ("%#GitSignsDelete#-" .. git_info.removed .. " ") or ""
-  if git_info.added == 0 then
-    added = ""
-  end
-  if git_info.changed == 0 then
-    changed = ""
-  end
-  if git_info.removed == 0 then
-    removed = ""
-  end
   return table.concat {
-     " ",
-     added,
-     changed,
-     removed,
-     " ",
-     "%#GitSignsAdd# ",
-     git_info.head,
-     " %#Normal#",
+    " ",
+    added,
+    changed,
+    removed,
+    " ",
+    "%#GitSignsAdd# ",
+    git_info.head,
+    " %#Normal#",
   }
 end
 
--- Whether the file is read-only
+-- Checks if the file is read-only
 local function is_readonly()
   if vim.bo.readonly then
     return "RO"
@@ -119,15 +114,17 @@ local function is_readonly()
   return ""
 end
 
+-- Retrieves the file icon
 local function get_file_icon()
   return require("nvim-web-devicons").get_icon_by_filetype(vim.bo.filetype, { default = true })
 end
 
+-- Formats diagnostics with prefix
 local function process_diagnostics(prefix, n)
-  local out = prefix .. n
-  return out
+  return prefix .. n
 end
 
+-- Retrieves LSP diagnostics
 local function get_lsp_diagnostics(bufnr)
   local result = {}
   local levels = {
@@ -142,6 +139,7 @@ local function get_lsp_diagnostics(bufnr)
   return result
 end
 
+-- Sets up diagnostics section
 local function setup_diagnostics()
   local diagnostics = get_lsp_diagnostics(0)
   local errors = diagnostics.errors
@@ -156,32 +154,36 @@ local function setup_diagnostics()
   end
 end
 
+-- Sets up Tmux status
 local function setup_tmux()
   local tmux_status_output = tmux_status.show() or ""
-  return tostring(tmux_status_output)  -- Ensure tmux status is a string
+  return tostring(tmux_status_output)
 end
 
+-- Main function to generate the statusline
 function Status_line()
   local mode = vim.fn.mode()
-  local mg = get_mode_group(mode)
+  local mode_group = get_mode_group(mode)
+  local mode_color = mode_colors[mode_group] or colors.color4
+
+  -- Highlight the mode group
+  vim.api.nvim_command('hi StatusLineMode guifg=' .. mode_color .. ' guibg=NONE')
 
   return table.concat({
-    gen_section({ get_mode_group_display_name(mg) }),
+    "%#StatusLineMode#",  -- Set mode-specific color
+    gen_section({ get_mode_group_display_name(mode_group) }),
     " ",
-    -- Git diff
     gen_section({ get_diff() or "" }),
     "%=",
     gen_section({ setup_diagnostics() }),
     " ",
-    -- tmux section
     gen_section({ setup_tmux() }),
-    -- " ",
-   
     gen_section({ "Ln %l, Col %c" }),
   })
 end
 
 vim.o.statusline = "%!luaeval('Status_line()')"
+
 -----------------------------------------------------------------
 
 ----------------------- //SECTION: Winbar -------------------

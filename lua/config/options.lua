@@ -4,6 +4,8 @@
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 local global = vim.g
 local options = vim.opt
+vim.cmd.colorscheme('gruvbox-material')
+-- set theme
 options.number = true
 options.showmode = false
 -- Case
@@ -29,3 +31,8 @@ options.swapfile = false
 
 vim.opt.termguicolors = true
 vim.opt.updatetime = 200
+-- Disable Mouse
+-- vim.opt.mouse = ''
+vim.opt.mousescroll = "ver:0,hor:0"
+vim.opt.mousemodel = 'extend'
+
