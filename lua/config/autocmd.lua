@@ -40,3 +40,28 @@ vim.api.nvim_create_autocmd("User", {
 		end
 	end,
 })
+
+-- Create an augroup named 'numbertoggle' and clear it if it already exists
+vim.api.nvim_create_augroup('numbertoggle', { clear = true })
+
+-- Autocmd to enable relative number when entering a buffer, focus is gained, leaving insert mode, or entering a window
+vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
+  group = 'numbertoggle',
+  pattern = '*',
+  callback = function()
+    if vim.wo.number and vim.fn.mode() ~= 'i' then
+      vim.wo.relativenumber = true
+    end
+  end,
+})
+
+-- Autocmd to disable relative number when leaving a buffer, focus is lost, entering insert mode, or leaving a window
+vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
+  group = 'numbertoggle',
+  pattern = '*',
+  callback = function()
+    if vim.wo.number then
+      vim.wo.relativenumber = false
+    end
+  end,
+})

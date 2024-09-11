@@ -35,3 +35,8 @@ vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NONE', fg = 'NONE' })
 vim.api.nvim_set_hl(0, 'SnapPrompt', { bg = 'NONE', fg = 'NONE' })
 -- vim.api.nvim_set_hl(0, 'SnapSelect', { bg = 'NONE', fg = 'NONE' })
 vim.api.nvim_set_hl(0, 'SnapBorder', { bg = 'NONE', fg = 'NONE' })
+
+-- // SECTION: Neotree Winseperator
+-- vim.api.nvim_set_hl(0, 'WinSeparator', { bg = 'NONE', fg = 'NONE' })
+-- vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', {bg = '#404040' })
+vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', {fg="#292828" })
