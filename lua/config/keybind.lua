@@ -41,53 +41,5 @@ if vim.o.wrap then
     keymap.set("n", "k", [[v:count ? 'k' : 'gk']], {expr = true})
 end
 
--- Function to toggle FZF find files using Snap
--- Function to toggle FZF find files using Snap with centered screen
-function toggle_find_files()
-    require "snap".run {
-        prompt = '🔎',
-        -- Set layout to center the Snap window
-        layout = function()
-            local lines = vim.api.nvim_get_option("lines")
-            local columns = vim.api.nvim_get_option("columns")
-            local height = math.floor(lines * 0.2) -- Set height to 50% of total lines
-            local width = math.floor(columns * 0.4) -- Set width to 70% of total columns
-            -- Calculate row and col to center the window
-            local row = math.floor((lines - height) / 2) -- Center vertically
-            local col = math.floor((columns - width) / 2) -- Center horizontally
-            return {col = col, row = row, height = height, width = width}
-        end,
-        producer = require "snap".get "consumer.fzf"(require "snap".get "producer.ripgrep.file"),
-        select = require "snap".get "select.file".select,
-        multiselect = require "snap".get "select.file".multiselect
-    }
-end
 
--- Function to toggle live grep using Snap with centered screen
-function toggle_live_grep()
-    require "snap".run {
-        -- Optional: Add layout configuration if you want to center this window too
-        layout = function()
-            local lines = vim.api.nvim_get_option("lines")
-            local columns = vim.api.nvim_get_option("columns")
-            local height = math.floor(lines * 0.5)
-            local width = math.floor(columns * 0.8)
-            local row = math.floor((lines - height) / 2)
-            local col = math.floor((columns - width) / 2)
-            return {col = col, row = row, height = height, width = width}
-        end,
-        producer = require "snap".get "producer.ripgrep.vimgrep",
-        select = require "snap".get "select.vimgrep".select,
-        multiselect = require "snap".get "select.vimgrep".multiselect,
-        views = {require "snap".get "preview.vimgrep"}
-    }
-end
-
-
---
--- Keybindings
-keymap.set("n", "<leader>f", ":lua toggle_find_files()<CR>", {noremap = true, silent = true})
-keymap.set("n", "<leader>g", ":lua toggle_live_grep()<CR>", {noremap = true, silent = true})
--- Git: Toggle lazygit
-keymap.set("n", "<leader>lg", "<cmd>LazyGit<CR>", {noremap = true, silent = true})
-keymap.set("n", "<leader>dv", "<cmd>DiffviewOpen<CR>", {noremap = true, silent = true})
+-- Comments

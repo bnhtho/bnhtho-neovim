@@ -59,10 +59,11 @@ return
       }
     end,
   },
-  -- Mini.Animated
-  { 'echasnovski/mini.cursorword', version = '*',
-  config = function()
-  require("mini.cursorword").setup()
-  end
-},
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  },
+  -- { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }

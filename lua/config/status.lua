@@ -195,7 +195,6 @@ function custom_tabline()
   -- Get the current buffer number
   local current_buf = vim.fn.bufnr('%')
   local current_ft = vim.bo.filetype
-  print(current_ft)
   local tabline = ""
 
   for _, buf in ipairs(buffers) do

@@ -30,6 +30,8 @@ require("lazy").setup({
     { import = "plugins/utils" },
     -- Git
     { import = "plugins/git" },
+    -- Format
+    { import = "plugins/formatter" },
   },
 
   install = { colorscheme = { "gruvbox" } },

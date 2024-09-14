@@ -15,14 +15,14 @@ options.smartcase = true
 options.splitright = true
 options.splitbelow = true
 -- Fillchar
-options.fillchars = {eob = " "}
+options.fillchars = { eob = " " }
 options.inccommand = 'split'
 options.scrolloff = 10
 -- popup whichkey sooner
 -- Disable hlsearch
 options.hlsearch = false
 options.wrap = true
--- Gui 
+-- Gui
 options.cmdheight = 0
 options.showtabline = 3
 options.laststatus = 3
@@ -35,4 +35,3 @@ vim.opt.updatetime = 200
 -- vim.opt.mouse = ''
 vim.opt.mousescroll = "ver:0,hor:0"
 vim.opt.mousemodel = 'extend'
-

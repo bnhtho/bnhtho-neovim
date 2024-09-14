@@ -7,7 +7,7 @@ return {
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
-                "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp"
         },
         config = function()
             local mason = require("mason")
@@ -26,27 +26,33 @@ return {
             mason_lsp.setup(
                 {
                     ensure_installed = {
-                        "lua_ls", 
-                        "rust_analyzer", 
+                        "lua_ls",
+                        "rust_analyzer",
                         "clangd",
                         "pylsp",
                         -- Markdown
-                        "marksman"
+                        "marksman",
+                        "sqlls",
+                        
                     }
                 }
             )
-            
+
             local lspconfig = require("lspconfig")
-            local capabilities = vim.tbl_deep_extend("force",
-            vim.lsp.protocol.make_client_capabilities(),
-            require('cmp_nvim_lsp').default_capabilities()
-          )
-          capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-          vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-            vim.lsp.diagnostic.on_publish_diagnostics, {
-              update_in_insert = true,
-            }
-          )
+            local capabilities =
+                vim.tbl_deep_extend(
+                "force",
+                vim.lsp.protocol.make_client_capabilities(),
+                require("cmp_nvim_lsp").default_capabilities()
+            )
+            capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+            vim.lsp.handlers["textDocument/publishDiagnostics"] =
+                vim.lsp.with(
+                vim.lsp.diagnostic.on_publish_diagnostics,
+                {
+                    update_in_insert = true
+                }
+            )
             -- Setup LSP.
             -- You can add more LSP servers here
             -- Python
@@ -55,10 +61,10 @@ return {
                 capabilities = capabilities,
                 plugins = {
                     rope_import = {
-                        enabled = true,
-                    },
+                        enabled = true
+                    }
                 },
-                filetypes= {"python"}
+                filetypes = {"python"}
             }
             -- C++
             lspconfig.clangd.setup {
@@ -70,11 +76,37 @@ return {
                 -- on_attach = on_attach,
                 capabilities = capabilities
             }
-	    lspconfig.lua_ls.setup{
-		capabilities = capabilities		
-	    }
+            lspconfig.lua_ls.setup {
+                capabilities = capabilities
+            }
+            lspconfig.sqlls.setup {
+                capabilities = capabilities,
+                filetypes = {"sql"},
+                root_dir = function(_)
+                    return vim.loop.cwd()
+                end
+            }
+
             -- Setup nvim-cmp.
         end
     },
-    
+    -- Install tools
+    {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        requires = {
+            'williamboman/mason.nvim',
+        },
+        config = function()
+            require('mason-tool-installer').setup({
+                ensure_installed = {
+                   -- -- Formatter
+                        "black",
+                        "isort",
+                        "prettier",
+                        "prettier",
+                        "prettierd"
+                },
+            })
+        end,
+    },
 }

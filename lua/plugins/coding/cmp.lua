@@ -11,6 +11,8 @@ return {
             "kdheepak/cmp-latex-symbols",
             "hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
             "hrsh7th/cmp-path", -- Path source for nvim-cmp
+	    "ray-x/cmp-sql", -- SQL,
+
             "hrsh7th/cmp-cmdline", -- Cmdline source for nvim-cmp
             {
                 "L3MON4D3/LuaSnip",
@@ -83,6 +85,7 @@ return {
                     { name = "nvim_lua"},
                     { name = "buffer"},
                     { name = "nvim_lsp_signature_help"},
+                    { name = "sql"},
                     {
                         name = "spell",
                         max_item_count = 5,
@@ -96,6 +99,9 @@ return {
                     },
                     {
                         name = "latex_symbols",
+			max_item_count = "15",
+			keyword_length = "1",
+
                         option = {
                           strategy = 0, -- mixed
                         },
