@@ -42,4 +42,19 @@ if vim.o.wrap then
 end
 
 
--- Comments
+-- 
+-- Function to toggle live grep using Snap
+function toggle_live_grep()
+    require'snap'.run {
+      producer = require'snap'.get'producer.ripgrep.vimgrep',
+      select = require'snap'.get'select.vimgrep'.select,
+      multiselect = require'snap'.get'select.vimgrep'.multiselect,
+      views = {require'snap'.get'preview.vimgrep'}
+    }
+  end
+
+  -- Set keybind to toggle FZF find files
+-- vim.api.nvim_set_keymap('n', '<leader>f', ':lua toggle_find_files()<CR>', { noremap = true, silent = true })
+
+-- Optional: Set keybind to toggle live grep
+vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { noremap = true, silent = true })
