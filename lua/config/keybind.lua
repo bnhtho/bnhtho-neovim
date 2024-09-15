@@ -58,3 +58,8 @@ function toggle_live_grep()
 
 -- Optional: Set keybind to toggle live grep
 vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { noremap = true, silent = true })
+
+
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})

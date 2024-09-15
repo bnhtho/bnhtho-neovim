@@ -1,7 +1,7 @@
 -- author: thohnb
 -- Highlight theme
 -- //SECTION: Highlight
-
+if (vim.g.colors_name == 'gruvbox-material') then
 -- //SECTION: nvim-autocmp
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
@@ -40,3 +40,15 @@ vim.api.nvim_set_hl(0, 'SnapBorder', { bg = 'NONE', fg = 'NONE' })
 -- vim.api.nvim_set_hl(0, 'WinSeparator', { bg = 'NONE', fg = 'NONE' })
 -- vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', {bg = '#404040' })
 vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', { fg = "#292828" })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = "#292828" })
+vim.api.nvim_set_hl(0, 'EdgyIcon', { fg = "#292828" })
+vim.api.nvim_set_hl(0, 'EdgyIconActive', { fg = "#292828" })
+-- vim.api.nvim_set_hl(0, '', { bg= "red",fg = "#292828" })
+vim.api.nvim_set_hl(0, 'EdgyTitle', { bg = "#292828"})
+vim.api.nvim_set_hl(0, 'FloatTitle', { bg = "#292828"})
+vim.api.nvim_set_hl(0, 'EdgyWinBar', { bg = "#292828"})
+vim.api.nvim_set_hl(0, 'WinBar', { bg = "#292828"})
+vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "#292828"})
+vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828"})
+
+end
