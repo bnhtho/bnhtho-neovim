@@ -74,8 +74,10 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorHold'}, {
   pattern = '*',
   callback = function()
     if vim.bo.filetype == "dashboard" then
+
       hide_cursor()
     else
+      
       show_cursor()
     end
 
@@ -90,3 +92,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("conform").format({ bufnr = args.buf })
   end,
 })
+
+

@@ -1,3 +1,4 @@
+
 return{
     "folke/edgy.nvim",
     event = "VeryLazy",
@@ -27,7 +28,6 @@ return{
           },
         animate = {
             enabled = false,
-            fps = 100, -- frames per second
             cps = 120, -- cells per second
             on_begin = function()
               vim.g.minianimate_disable = true

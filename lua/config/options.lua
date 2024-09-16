@@ -12,7 +12,6 @@ options.showmode = false
 options.ignorecase = true
 options.smartcase = true
 -- split
-options.splitright = true
 options.splitbelow = true
 -- Fillchar
 options.fillchars = { eob = " " }

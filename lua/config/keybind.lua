@@ -3,7 +3,7 @@
 local keymap = vim.keymap
 local snap = require("snap")
 keymap.set("n", "<leader>a", "gg<S-v>G")
-keymap.set("n", "<leader>t", "<Cmd>:Neotree toggle<CR>")
+-- keymap.set("n", "<leader>t", "<Cmd>:Neotree toggle<CR>")
 
 -- Moving around windows using s + h,j,k,l
 keymap.set("n", "<leader>h", "<C-w>h")
@@ -63,3 +63,22 @@ vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { norem
 vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
     desc = "Search current word"
 })
+
+
+
+
+local function toggle_neotree()
+  local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+  if current_filetype == 'dashboard' then
+    -- Delete the buffer if it is a dashboard
+    vim.cmd("bdelete")
+    -- Reveal the neotree
+    vim.cmd("Neotree reveal")
+  else
+    -- Toggle neotree normally
+    vim.cmd("Neotree toggle")
+  end
+end
+
+
+vim.keymap.set("n", "<leader>t", toggle_neotree, { noremap = true, silent = true })
