@@ -85,12 +85,22 @@ function open_buffer_list_ui()
         data = items,  -- Pass the dynamic buffer list
         -- Event for selecting a buffer
         on_select = function(node, component)
-            -- Close the current buffer
-            vim.cmd("bdelete")
-            -- Switch to the selected buffer
-            vim.cmd("buffer " .. node.bufnr)
-            -- Close the UI after selection
+            -- Check if the buffer is already open in any window
+            local buffer_found = false
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                if buf == node.bufnr then
+                    -- Switch to the window displaying the buffer
+                    vim.api.nvim_set_current_win(win)
+                    buffer_found = true
+                    break
+                end
+            end
+            
             component:unmount()
+            -- If the buffer is not open in any window, open it in a new split
+                vim.cmd("buffer " .. node.bufnr)
+            -- Close the UI after selection
         end,
         -- Customize how each buffer is displayed in the UI
         prepare_node = function(node, line, component)
