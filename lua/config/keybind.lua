@@ -29,8 +29,6 @@ keymap.set({"n", "t"}, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 
 -- Tab
-keymap.set("n","<leader>w",":Bdelete<CR>")
---
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
 -- J
@@ -52,25 +50,6 @@ function toggle_live_grep()
 
 vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { noremap = true, silent = true })
 
+vim.keymap.set('n', 'q:', function() end)
+keymap.set('n', '<leader>t', "<CMD>Neotree<CR>")
 
-vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word"
-})
-
-
-
-
-local function toggle_neotree()
-  -- @usage: Detect current dashboard _filetype
-  local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
-  print(current_filetype)
-  if current_filetype == 'dashboard' then
-    vim.cmd("bdelete")
-    vim.cmd("Neotree reveal")
-  else
-    vim.cmd("Neotree toggle")
-  end
-end
-
-
-vim.keymap.set("n", "<leader>t", toggle_neotree, { noremap = true, silent = true })

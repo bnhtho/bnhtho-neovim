@@ -3,8 +3,6 @@
 return {
 	-- Git signs
 	{ "lewis6991/gitsigns.nvim", version = "*", opts = {} },
-	-- Git difview
-	{ "sindrets/diffview.nvim",  version = "*", cmd = "DiffviewOpen", opts = {} },
 	-- Git Lazy
 	{
 		"kdheepak/lazygit.nvim",

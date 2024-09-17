@@ -10,24 +10,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
   })
  
- 
-  vim.api.nvim_create_autocmd({
-    "WinResized", -- or WinResized on NVIM-v0.9 and higher
-    "BufWinEnter",
-    "CursorHold",
-    "InsertLeave",
-  
-    -- include this if you have set `show_modified` to `true`
-    "BufModifiedSet",
-  }, {
-    group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-    callback = function()
-      require("barbecue.ui").update()
-    end,
-  })
-
-
-
 -- Create an augroup named 'numbertoggle' and clear it if it already exists
 vim.api.nvim_create_augroup('numbertoggle', { clear = true })
 
@@ -53,36 +35,7 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave'
   end,
 })
 
--- Cusror
-local function hide_cursor()
-  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-  hl.blend = 100
-  vim.api.nvim_set_hl(0, 'Cursor', hl)
-  vim.opt.guicursor:append('a:Cursor/lCursor')
-end
--- hide cursor
-local function show_cursor()
-  local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
-  hl.blend = 0
-  vim.api.nvim_set_hl(0, 'Cursor', hl)
-  vim.opt.guicursor:remove('a:Cursor/lCursor')
-end
--- 
--- CursorMoved
-vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorHold'}, {
-  group = 'numbertoggle',
-  pattern = '*',
-  callback = function()
-    if vim.bo.filetype == "dashboard" then
 
-      hide_cursor()
-    else
-      
-      show_cursor()
-    end
-
-  end,
-})
 
 
 -- Format on save Format
@@ -92,5 +45,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("conform").format({ bufnr = args.buf })
   end,
 })
-
 

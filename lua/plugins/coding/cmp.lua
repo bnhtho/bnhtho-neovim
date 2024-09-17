@@ -81,6 +81,7 @@ return {
                 -- Source
                 sources = {
                     { name = "luasnip"},
+                    {name = "lazydev",group_index = 0},
                     { name = "nvim_lsp"},
                     { name = "nvim_lua"},
                     { name = "buffer"},
