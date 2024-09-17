@@ -34,25 +34,6 @@ return
     event = { "InsertEnter", "CmdlineEnter" },
     opts = {},
    },
-
-   
-   -- Outline nvim
-   {
-    'stevearc/aerial.nvim',
-    opts = {
-      layout = {
-        max_width = { 40, 0.2 },
-      width = 50,
-      min_width = 10,
-      },
-      close_automatic_events = {"unsupported"},
-    },
-    -- Optional dependencies
-    dependencies = {
-       "nvim-treesitter/nvim-treesitter",
-       "nvim-tree/nvim-web-devicons"
-    },
-  },
   {
     'numToStr/Comment.nvim',
     config = function()

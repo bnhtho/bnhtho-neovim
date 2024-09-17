@@ -32,7 +32,6 @@ keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 -- Buffer
 keymap.set("n","<Tab>",":bnext<CR>")
 keymap.set("n","<leader>w",":bdelete<cr>")
-keymap.set("n","<leader>o",":AerialToggle<cr>")
 
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
