@@ -65,5 +65,12 @@ return
         require('Comment').setup()
     end
   },
+  -- tints
+  {
+    "levouh/tint.nvim",opts = {
+      tint = 20,
+      highlight_ignore_patterns = { "WinSeparator" },
+    }
+  }
   -- { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }

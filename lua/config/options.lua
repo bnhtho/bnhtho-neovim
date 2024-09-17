@@ -34,12 +34,7 @@ vim.opt.updatetime = 200
 -- vim.opt.mouse = ''
 vim.opt.mousescroll = "ver:0,hor:0"
 vim.opt.mousemodel = 'extend'
-
-local n = require("nui-components")
-
--- Create the renderer with specific dimensions
-
-
+options.cursorline = true
 local n = require("nui-components")
 
 -- Create the renderer with specific dimensions
@@ -82,6 +77,7 @@ function open_buffer_list_ui()
     local buffer_tree = n.tree({
         autofocus = true,
         border_label = "Buffer List",
+        selected_node = node,
         data = items,  -- Pass the dynamic buffer list
         -- Event for selecting a buffer
         on_select = function(node, component)
@@ -102,6 +98,7 @@ function open_buffer_list_ui()
                 vim.cmd("buffer " .. node.bufnr)
             -- Close the UI after selection
         end,
+        
         -- Customize how each buffer is displayed in the UI
         prepare_node = function(node, line, component)
             local buf_path = node.text
@@ -122,12 +119,25 @@ function open_buffer_list_ui()
         end
         
     })
+    
+    -- Add mapping
 
     -- Render the buffer list using the renderer
+    renderer:add_mappings({
+        {
+            mode = { "n" },
+            key = "L",
+            handler = function()
+                local tree = buffer_tree:get_tree()
+                local test = tree.nodes.by_id
+                print(vim.inspect(test))
+            end
+        }
+    })
+
     renderer:render(buffer_tree)
 end
 
--- Keybind to open buffer list UI
 -- Keybind to open buffer list UI
 vim.api.nvim_set_keymap('n', '<Tab>', ':lua open_buffer_list_ui()<CR>', { noremap = true, silent = true })
 
