@@ -43,7 +43,7 @@ vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', { fg = "#292828" })
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg = "#292828" })
 vim.api.nvim_set_hl(0, 'EdgyIcon', { fg = "#292828" })
 vim.api.nvim_set_hl(0, 'EdgyIconActive', { fg = "#292828" })
--- vim.api.nvim_set_hl(0, '', { bg= "red",fg = "#292828" })
+
 vim.api.nvim_set_hl(0, 'EdgyTitle', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'FloatTitle', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'EdgyWinBar', { bg = "#292828"})
