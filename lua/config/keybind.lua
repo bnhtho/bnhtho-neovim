@@ -27,8 +27,13 @@ keymap.set({"n", "t"}, "<C-h>", "<CMD>NavigatorLeft<CR>")
 keymap.set({"n", "t"}, "<C-l>", "<CMD>NavigatorRight<CR>")
 keymap.set({"n", "t"}, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
-
 -- Tab
+
+-- Buffer
+keymap.set("n","<Tab>",":bnext<CR>")
+keymap.set("n","<leader>w",":bdelete<cr>")
+keymap.set("n","<leader>o",":AerialToggle<cr>")
+
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
 -- J
@@ -48,8 +53,8 @@ function toggle_live_grep()
     }
   end
 
-vim.api.nvim_set_keymap('n', '<leader>g', ':lua toggle_live_grep()<CR>', { noremap = true, silent = true })
+keymap.set('n', '<leader>g', ':lua toggle_live_grep()<CR>')
 
-vim.keymap.set('n', 'q:', function() end)
-keymap.set('n', '<leader>t', "<CMD>Neotree<CR>")
+keymap.set('n', 'q:', function() end)
+keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 

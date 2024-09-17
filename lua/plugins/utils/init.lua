@@ -38,22 +38,20 @@ return
    
    -- Outline nvim
    {
-    "hedyhli/outline.nvim",
-    cmd = {"Outline","OutlineOpen"},
-    config = function()
-      -- Example mapping to toggle outline
-      vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>",
-        { desc = "Toggle Outline" })
-      require("outline").setup {
-        -- Your setup opts here (leave empty to use defaults)
-        outline_window = {
-          hide_cursor = false,
-          auto_jump = true,
-          auto_close = true,
-          focus_on_open = false,
-        }
-      }
-    end,
+    'stevearc/aerial.nvim',
+    opts = {
+      layout = {
+        max_width = { 40, 0.2 },
+      width = 50,
+      min_width = 10,
+      },
+      close_automatic_events = {"unsupported"},
+    },
+    -- Optional dependencies
+    dependencies = {
+       "nvim-treesitter/nvim-treesitter",
+       "nvim-tree/nvim-web-devicons"
+    },
   },
   {
     'numToStr/Comment.nvim',
@@ -61,5 +59,10 @@ return
         require('Comment').setup()
     end
   },
-  -- { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
+  { 'echasnovski/mini.bufremove', version = '*',opts={}},
 }

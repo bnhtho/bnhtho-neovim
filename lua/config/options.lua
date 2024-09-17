@@ -34,4 +34,6 @@ options.updatetime = 200
 -- vim.opt.mouse = ''
 options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
-options.cursorline = true
+
+-- set autodir
+vim.o.autochdir = true

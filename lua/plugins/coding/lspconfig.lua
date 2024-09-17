@@ -10,6 +10,7 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp"
         },
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             local mason = require("mason")
             local mason_lsp = require("mason-lspconfig")
@@ -70,12 +71,14 @@ return {
             -- C++
             lspconfig.clangd.setup {
                 -- on_attach = on_attach,
-                capabilities = capabilities
+                capabilities = capabilities,
+                filetypes = {'h', 'cpp'},
             }
             -- Markdown
             lspconfig.marksman.setup {
                 -- on_attach = on_attach,
-                capabilities = capabilities
+                capabilities = capabilities,
+                filetypes = {'markdown'},
             }
             lspconfig.lua_ls.setup {
                 capabilities = capabilities
@@ -114,6 +117,7 @@ return {
     {
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
+        event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			library = {
 				-- See the configuration section for more details
