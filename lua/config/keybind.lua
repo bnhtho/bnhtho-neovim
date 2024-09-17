@@ -2,6 +2,7 @@
 
 local keymap = vim.keymap
 local snap = require("snap")
+local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
 keymap.set("n", "<leader>a", "gg<S-v>G")
 -- keymap.set("n", "<leader>t", "<Cmd>:Neotree toggle<CR>")
 
@@ -30,7 +31,7 @@ keymap.set({"n", "t"}, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 
 -- Tab
-keymap.set("n", "<Tab>", ":bnext<CR>", {silent = true})
+-- keymap.set("n", "<Tab>", ":bnext<CR>", {silent = true})
 keymap.set("n","<leader>w",":Bdelete<CR>")
 --
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
@@ -45,6 +46,7 @@ end
 -- 
 -- Function to toggle live grep using Snap
 function toggle_live_grep()
+    print(current_filetype)
     require'snap'.run {
       producer = require'snap'.get'producer.ripgrep.vimgrep',
       select = require'snap'.get'select.vimgrep'.select,
@@ -68,7 +70,9 @@ vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual(
 
 
 local function toggle_neotree()
+  -- @usage: Detect current dashboard _filetype
   local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+  print(current_filetype)
   if current_filetype == 'dashboard' then
     -- Delete the buffer if it is a dashboard
     vim.cmd("bdelete")

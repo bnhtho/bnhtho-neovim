@@ -50,5 +50,7 @@ vim.api.nvim_set_hl(0, 'EdgyWinBar', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'WinBar', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828"})
+-- UI
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE'})
 
 end

@@ -31,6 +31,7 @@ return {
         filtered_items = {
           show_hidden_count = false,
           never_show = {
+            ".",
             '.DS_Store',
           },
         },
