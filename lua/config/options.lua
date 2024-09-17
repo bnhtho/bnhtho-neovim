@@ -94,10 +94,23 @@ function open_buffer_list_ui()
         end,
         -- Customize how each buffer is displayed in the UI
         prepare_node = function(node, line, component)
-            -- Display buffer name only
-            line:append(vim.fn.fnamemodify(node.text, ":t"))
+            local buf_path = node.text
+            local folder_name = vim.fn.fnamemodify(vim.fn.fnamemodify(buf_path, ":p:h"), ":t")
+            local file_name = vim.fn.fnamemodify(buf_path, ":t")
+            local filetype = vim.fn.fnamemodify(file_name, ":e")  -- Extract the file extension as filetype
+            
+            -- Get the icon and highlight for the file type
+            local icon, icon_highlight = require("nvim-web-devicons").get_icon_by_filetype(filetype, { default = true })
+            -- Append the folder name as a comment
+            line:append("[" .. folder_name .. "] ", "Comment")
+        
+            -- Append the file name\
+            line:append(icon .. " ")
+            line:append(file_name)
+        
             return line
-        end,
+        end
+        
     })
 
     -- Render the buffer list using the renderer
