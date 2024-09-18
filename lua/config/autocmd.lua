@@ -23,15 +23,3 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnte
     end
   end,
 })
-
--- Autocmd to disable relative number when leaving a buffer, focus is lost, entering insert mode, or leaving a window
-vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
-  group = 'numbertoggle',
-  pattern = '*',
-  callback = function()
-    if vim.wo.number then
-      vim.wo.relativenumber = false
-    end
-  end,
-})
-

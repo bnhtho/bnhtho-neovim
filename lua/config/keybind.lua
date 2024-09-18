@@ -30,8 +30,8 @@ keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 -- Tab
 
 -- Buffer
-keymap.set("n","<Tab>",":bnext<CR>")
-keymap.set("n","<leader>w",":bdelete<cr>")
+-- keymap.set("n","<Tab>",":bnext<CR>")
+keymap.set("n","<leader>w","<CMD>bdelete<cr>")
 
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
@@ -56,4 +56,6 @@ keymap.set('n', '<leader>g', ':lua toggle_live_grep()<CR>')
 
 keymap.set('n', 'q:', function() end)
 keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
+-- Delete floating windows
+keymap.set('n', '<ESC>', "<C-w>o")
 

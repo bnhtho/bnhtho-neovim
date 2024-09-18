@@ -39,6 +39,7 @@
   "outline.nvim": { "branch": "main", "commit": "41e7b88a2b0baa90619af5ec8af462fcb442db65" },
   "plenary.nvim": { "branch": "master", "commit": "f4faa5a3dc77a694ba58f42585985fed88540ac6" },
   "snap": { "branch": "main", "commit": "486a2ab714eee79c392abfb45bdb94398409ed34" },
+  "snipe.nvim": { "branch": "main", "commit": "f1abd4aaaef6398b45dcddc9f1a40dd982f732b0" },
   "tmux-status.nvim": { "branch": "main", "commit": "18268e1044eff72dab201069204b402ee4d09bda" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "ff21db642847840db183b9421ab3d89795a7fbba" }
 }
