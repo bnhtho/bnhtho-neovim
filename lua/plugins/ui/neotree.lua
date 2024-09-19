@@ -25,7 +25,7 @@ return {
         },
       },
       -- recommanded config for better UI
-      hide_root_node = true,
+      hide_root_node = false,
       retain_hidden_root_indent = true,
       filesystem = {
         filtered_items = {

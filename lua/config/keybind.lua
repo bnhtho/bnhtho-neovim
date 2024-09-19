@@ -59,3 +59,5 @@ keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 -- Delete floating windows
 keymap.set('n', '<ESC>', "<C-w>o")
 
+-- Toggle terminal
+keymap.set('n','<C-_>',"<CMD>ToggleTerm<CR>")

@@ -41,5 +41,6 @@
   "snap": { "branch": "main", "commit": "486a2ab714eee79c392abfb45bdb94398409ed34" },
   "snipe.nvim": { "branch": "main", "commit": "f1abd4aaaef6398b45dcddc9f1a40dd982f732b0" },
   "tmux-status.nvim": { "branch": "main", "commit": "18268e1044eff72dab201069204b402ee4d09bda" },
+  "toggleterm.nvim": { "branch": "main", "commit": "48be57eaba817f038d61bbf64d2c597f578c0827" },
   "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "ff21db642847840db183b9421ab3d89795a7fbba" }
 }
