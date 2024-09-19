@@ -133,7 +133,6 @@ return {
                 ensure_installed = {
                    -- -- Formatter
                         "black",
-                        "isort",
                         "prettier",
                         "prettier",
                         "prettierd"

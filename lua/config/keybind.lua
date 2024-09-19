@@ -60,4 +60,4 @@ keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 keymap.set('n', '<ESC>', "<C-w>o")
 
 -- Toggle terminal
-keymap.set('n','<C-_>',"<CMD>ToggleTerm<CR>")
+keymap.set('n','<leader>`',"<CMD>ToggleTerm<CR>")
