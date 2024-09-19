@@ -23,7 +23,6 @@ options.hlsearch = false
 options.wrap = true
 -- Gui
 options.cmdheight = 0
-options.showtabline = 3
 options.laststatus = 3
 -- Disable swapsize
 options.swapfile = false
@@ -36,5 +35,4 @@ options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
 
 
--- set autodir
-vim.o.autochdir = true
+

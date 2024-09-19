@@ -2,7 +2,6 @@
 
 local keymap = vim.keymap
 local snap = require("snap")
-local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
 keymap.set("n", "<leader>a", "gg<S-v>G")
 
 -- Moving around windows using s + h,j,k,l
@@ -29,8 +28,9 @@ keymap.set({"n", "t"}, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 -- Tab
 
--- Buffer
--- keymap.set("n","<Tab>",":bnext<CR>")
+-- Buffer Switch to last edit
+vim.keymap.set('n', '<S-Tab>', '<cmd>:buffer#<cr>', { noremap = true, silent = false })
+
 keymap.set("n","<leader>w","<CMD>bdelete<cr>")
 
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
@@ -43,7 +43,6 @@ end
 
 
 function toggle_live_grep()
-    print(current_filetype)
     require'snap'.run {
       producer = require'snap'.get'producer.ripgrep.vimgrep',
       select = require'snap'.get'select.vimgrep'.select,
@@ -61,3 +60,14 @@ keymap.set('n', '<ESC>', "<C-w>o")
 
 -- Toggle terminal
 keymap.set('n','<leader>`',"<CMD>ToggleTerm<CR>")
+
+-- Map <Tab> to trigger buffer switching with wildcharm
+keymap.set('n', '<Tab>', ':buffer ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
+-- Split Buffer
+-- Horizontal 
+keymap.set('n', 'sb', ':sbuffer ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
+-- Vertical
+keymap.set('n', 'vb', ':vsplit ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
+--
+keymap.set('c', '<Down>', '<C-n>', { noremap = true, silent = true })
+keymap.set('c', '<Up>', '<C-p>', { noremap = true, silent = true })

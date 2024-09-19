@@ -41,6 +41,13 @@ return
     end
   },
   {
+    'VonHeikemen/fine-cmdline.nvim',
+    dependencies = {
+      {'MunifTanjim/nui.nvim'}
+    },opts = {},
+    
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {},

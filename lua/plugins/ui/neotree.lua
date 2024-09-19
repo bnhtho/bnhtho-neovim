@@ -17,7 +17,7 @@ return {
         mappings = {
           ["<Tab>"] = function (state)
             state.commands["open"](state)
-            vim.cmd("Neotree reveal")
+            vim.cmd("Neotree")
           end,
           -- Use window picker
           ["J"] = "open_split",
