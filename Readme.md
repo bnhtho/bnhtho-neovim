@@ -34,8 +34,8 @@ This is my readme for my personal neovim configs
 | Normal  | <kbd><leader></kbd> + <kbd>t</kbd> | Toggle the Neotree file explorer |
 | Normal  | <kbd>Esc</kbd> | Close all floating windows |
 | Normal  | <kbd><leader></kbd> + <kbd>`</kbd> | Toggle the terminal |
-| Normal  | <kbd>s</kbd> + <kbd>b</kbd> | Split the buffer horizontally |
-| Normal  | <kbd>v</kbd> + <kbd>b</kbd> | Split the buffer vertically |
+| Normal  | <kbd>b</kbd> + <kbd>j</kbd> | Split the buffer horizontally |
+| Normal  | <kbd>b</kbd> + <kbd>h</kbd> | Split the buffer vertically |
 | Command | <kbd>Down</kbd> | Move down the autocomplete suggestion list |
 | Command | <kbd>Up</kbd> | Move up the autocomplete suggestion list |
 

@@ -29,7 +29,7 @@ keymap.set({"n", "t"}, "<C-j>", "<CMD>NavigatorDown<CR>")
 -- Tab
 
 -- Buffer Switch to last edit
-vim.keymap.set('n', '<S-Tab>', '<cmd>:buffer#<cr>', { noremap = true, silent = false })
+-- vim.keymap.set('n', '<S-Tab>', '<cmd>:buffer#<cr>', { noremap = true, silent = false })
 
 keymap.set("n","<leader>w","<CMD>bdelete<cr>")
 
@@ -61,13 +61,59 @@ keymap.set('n', '<ESC>', "<C-w>o")
 -- Toggle terminal
 keymap.set('n','<leader>`',"<CMD>ToggleTerm<CR>")
 
--- Map <Tab> to trigger buffer switching with wildcharm
-keymap.set('n', '<Tab>', ':buffer ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
--- Split Buffer
--- Horizontal 
-keymap.set('n', 'sb', ':sbuffer ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
--- Vertical
-keymap.set('n', 'vb', ':vsplit ' .. vim.api.nvim_replace_termcodes('<C-Z>', true, true, true), { noremap = true, silent = false })
---
 keymap.set('c', '<Down>', '<C-n>', { noremap = true, silent = true })
 keymap.set('c', '<Up>', '<C-p>', { noremap = true, silent = true })
+
+-- Function to switch to an existing buffer or create a new one
+function switch_or_create_buffer()
+  vim.ui.input({
+    prompt = "Buffer: ",
+    completion = "buffer"  -- Enable command-line completion
+  }, function(input)
+    if not input or input == "" then return end
+
+    local buffer_exists = false
+    local buffer_name = vim.fn.expand(input) -- Expand to handle path characters
+    local buffer_id = nil
+
+    -- Check if the buffer exists
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) == buffer_name then
+        buffer_exists = true
+        buffer_id = buf
+        break
+      end
+    end
+
+    -- If buffer exists, focus on it
+    if buffer_exists then
+      local buffer_in_split = false
+      
+      -- Check if buffer is already in a split window
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_buf(win) == buffer_id then
+          -- Buffer is in a split; focus on this window
+          vim.api.nvim_set_current_win(win)
+          buffer_in_split = true
+          break
+        end
+      end
+
+      -- If the buffer is not in a split window, switch to it in a new split
+      if not buffer_in_split then
+        vim.cmd('b ' .. buffer_name)
+      end
+    else
+      -- If buffer does not exist, create a new buffer
+      local new_buf = vim.api.nvim_create_buf(false, true)
+      vim.api.nvim_buf_set_name(new_buf, buffer_name)
+      -- Open a new split window for the new buffer
+      vim.cmd('new')
+      vim.api.nvim_set_current_buf(new_buf)
+    end
+  end)
+end
+
+-- Map <Tab> to trigger buffer switching with autocomplete
+vim.keymap.set('n', '<Tab>', [[:lua switch_or_create_buffer()<CR>]], { noremap = true, silent = false })
+vim.opt.wildcharm = vim.fn.char2nr('\26')

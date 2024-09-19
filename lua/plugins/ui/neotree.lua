@@ -20,8 +20,7 @@ return {
             vim.cmd("Neotree")
           end,
           -- Use window picker
-          ["J"] = "open_split",
-          ["L"] = "open_vsplit",
+          
         },
       },
       -- recommanded config for better UI
