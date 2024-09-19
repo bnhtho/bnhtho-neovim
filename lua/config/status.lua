@@ -185,3 +185,49 @@ end
 vim.o.statusline = "%!luaeval('Status_line()')"
 
 -----------------------------------------------------------------
+
+-- Function to switch to an existing buffer or create a new one
+function switch_or_create_buffer()
+  vim.ui.input({
+    prompt = "Buffer: ",
+    completion = "buffer"  -- Enable command-line completion
+  }, function(input)
+    if not input or input == "" then return end
+
+    local buffer_exists = false
+    local buffer_name = vim.fn.expand(input) -- Expand to handle path characters
+    local buffer_id = nil
+
+    -- Check if the buffer exists
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) == buffer_name then
+        buffer_exists = true
+        buffer_id = buf
+        break
+      end
+    end
+
+    -- If buffer exists, focus on it
+    if buffer_exists then
+      local buffer_in_split = false
+      
+      -- Check if buffer is already in a split window
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_buf(win) == buffer_id then
+          -- Buffer is in a split; focus on this window
+          vim.api.nvim_set_current_win(win)
+          buffer_in_split = true
+          break
+        end
+      end
+
+      -- If the buffer is not in a split window, switch to it in a new split
+      if not buffer_in_split then
+        vim.cmd('buffer ' .. buffer_name)
+      end
+    else
+      print("404")
+    end
+  end)
+end
+
