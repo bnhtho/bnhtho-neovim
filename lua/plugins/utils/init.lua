@@ -47,4 +47,5 @@ return
 	},
 
 	{ 'echasnovski/mini.bufremove', version = '*', opts = {} },
+	{ 'echasnovski/mini.tabline', version = '*', opts = {} },
 }

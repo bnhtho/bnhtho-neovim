@@ -1,7 +1,6 @@
 -- author: thohnb
 -- Highlight theme
 -- //SECTION: Highlight
-if (vim.g.colors_name == 'gruvbox-material') then
 -- //SECTION: nvim-autocmp
 vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
 vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
@@ -43,5 +42,32 @@ vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE'})
 -- Bufferline
-vim.api.nvim_set_hl(0, 'BufferLineSeparator', { bg = 'NONE', fg = 'NONE' })  -- Adjust fg to match your desired color
-end
+-- Set the main background color for the tabline
+vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = '#292828' })
+
+-- Highlight for current buffer
+vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = '#292828', fg = '#D2A655' }) -- Active buffer
+
+-- Highlight for visible buffers
+vim.api.nvim_set_hl(0, 'MiniTablineVisible', { bg = '#292828', fg = 'NONE' }) -- Visible buffer
+
+-- Highlight for hidden buffers (inactive)
+vim.api.nvim_set_hl(0, 'MiniTablineHidden', { bg = '#292828', fg = '#a0a0a0' }) -- Inactive buffer (gray)
+
+-- Highlight for modified current buffer
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { bg = '#3c3c3c', fg = '#ffcc00' }) -- Active modified buffer
+
+-- Highlight for modified visible buffers
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { bg = '#292828', fg = '#ffcc00' }) -- Visible modified buffer
+
+-- Highlight for modified hidden buffers
+vim.api.nvim_set_hl(0, 'MiniTablineModifiedHidden', { bg = '#292828', fg = '#a0a0a0' }) -- Inactive modified buffer
+
+-- Highlight for the fill area of the tabline
+vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = '#292828' }) -- Fill area
+
+-- Highlight for the tabpage section
+vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', { bg = '#292828', fg = '#ffffff' }) -- Tabpage section
+
+-- Highlight for float borders (if needed)
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#a0a0a0' })

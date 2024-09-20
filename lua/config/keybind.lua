@@ -42,7 +42,4 @@ keymap.set('n', '<ESC>', "<cmd>:only<cr>")
 -- Toggle terminal
 keymap.set('n', '<leader>`', "<CMD>ToggleTerm<CR>")
 
-keymap.set('c', '<Down>', '<C-n>', { noremap = true, silent = true })
-keymap.set('c', '<Up>', '<C-p>', { noremap = true, silent = true })
-
-vim.keymap.set('n', '<leader><space>', '<cmd>files<cr>:buffer ', {desc = 'Search open files'})
+keymap.set('n', '<Tab>', '<cmd>:bnext<cr>', { noremap = true, silent = true })
