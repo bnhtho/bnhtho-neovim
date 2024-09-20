@@ -33,14 +33,4 @@ options.updatetime = 200
 -- vim.opt.mouse = ''
 options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
--- redrirect :h to help floating board
-local function cmd_abbrev(abbrev, expansion)
-	local cmd = 'cabbr ' ..
-	    abbrev .. ' <c-r>=(getcmdpos() == 1 && getcmdtype() == ":" ? "' .. expansion .. '" : "' .. abbrev .. '")<CR>'
-	vim.cmd(cmd)
-end
 
-cmd_abbrev('h', 'FloatingHelp')
-cmd_abbrev('help', 'FloatingHelp')
-cmd_abbrev('helpc', 'FloatingHelpClose')
-cmd_abbrev('helpclose', 'FloatingHelpClose')

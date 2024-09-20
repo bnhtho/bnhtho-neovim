@@ -3,9 +3,7 @@
 -- Which Key
 return
 {
-	{
-		"camspiers/snap",
-	},
+	
 	-- mini.move
 	{
 		'echasnovski/mini.move',
@@ -41,14 +39,7 @@ return
 			require('Comment').setup()
 		end
 	},
-	{
-		'VonHeikemen/fine-cmdline.nvim',
-		dependencies = {
-			{ 'MunifTanjim/nui.nvim' }
-		},
-		opts = {},
-
-	},
+	
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",

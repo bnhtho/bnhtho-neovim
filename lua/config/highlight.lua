@@ -42,5 +42,6 @@ vim.api.nvim_set_hl(0, 'WinBar', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828"})
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE'})
-
+-- Bufferline
+vim.api.nvim_set_hl(0, 'BufferLineSeparator', { bg = 'NONE', fg = 'NONE' })  -- Adjust fg to match your desired color
 end
