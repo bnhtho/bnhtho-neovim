@@ -1,9 +1,7 @@
 -- What to do: add some utils plugins (usually small- default config)
-
 -- Which Key
 return
 {
-	
 	-- mini.move
 	{
 		'echasnovski/mini.move',
@@ -45,7 +43,7 @@ return
 		main = "ibl",
 		opts = {},
 	},
-
 	{ 'echasnovski/mini.bufremove', version = '*', opts = {} },
-	{ 'echasnovski/mini.tabline', version = '*', opts = {} },
+	-- Tabline
+	{ 'echasnovski/mini.tabline', version = '*', opts = {}},
 }

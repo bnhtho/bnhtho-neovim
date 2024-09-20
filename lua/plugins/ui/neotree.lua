@@ -19,7 +19,6 @@ return {
             state.commands["open"](state)
             vim.cmd("Neotree")
           end,
-          -- Use window picker
           
         },
       },
