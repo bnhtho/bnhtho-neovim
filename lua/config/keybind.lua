@@ -27,7 +27,7 @@ keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 keymap.set("n", "<leader>w", "<CMD>bdelete<cr>")
 
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
-keymap.set("x", "<C-d>", ":copy.-1<Cr>gv")
+keymap.set("x", "D", ":copy.-1<Cr>gv")
 if vim.o.wrap then
 	keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { expr = true })
 	keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { expr = true })
