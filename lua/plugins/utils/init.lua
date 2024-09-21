@@ -37,7 +37,7 @@ return
 			require('Comment').setup()
 		end
 	},
-	
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
@@ -45,7 +45,7 @@ return
 	},
 	{ 'echasnovski/mini.bufremove', version = '*', opts = {} },
 	-- Tabline
-	{ 'echasnovski/mini.tabline', version = '*', opts = {}},
+	{ 'echasnovski/mini.tabline',   version = '*', opts = {} },
 	{
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -55,5 +55,6 @@ return
 				-- Configuration here, or leave empty to use defaults
 			})
 		end
-	}
+	},
+	{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }

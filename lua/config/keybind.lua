@@ -23,9 +23,7 @@ keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
 keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
--- Tab
 keymap.set("n", "<leader>w", "<CMD>bdelete<cr>")
-
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "D", ":copy.-1<Cr>gv")
 if vim.o.wrap then
@@ -36,6 +34,7 @@ keymap.set('n', 'q:', function() end)
 keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 -- Delete floating windows
 keymap.set('n', '<ESC>', "<cmd>:only<cr>")
+-- Buffer
 -- H/L to next buffer/previous buffer
 keymap.set('n', 'L', '<cmd>:bnext<cr>', { noremap = true, silent = true })
 keymap.set('n', 'H', '<cmd>:bprev<cr>', { noremap = true, silent = true })
