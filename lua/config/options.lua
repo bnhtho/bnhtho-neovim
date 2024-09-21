@@ -34,6 +34,5 @@ options.updatetime = 200
 options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
 
-
-
-
+vim.g.netrw_banner = 0        -- disable that anoying Netrw banner
+vim.g.netrw_browser_split = 4 -- open in a prior window
