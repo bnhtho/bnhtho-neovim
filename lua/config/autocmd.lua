@@ -10,20 +10,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
   })
  
--- Create an augroup named 'numbertoggle' and clear it if it already exists
-vim.api.nvim_create_augroup('numbertoggle', { clear = true })
-
--- Autocmd to enable relative number when entering a buffer, focus is gained, leaving insert mode, or entering a window
-vim.api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
-  group = 'numbertoggle',
-  pattern = '*',
-  callback = function()
-    if vim.wo.number and vim.fn.mode() ~= 'i' then
-      vim.wo.relativenumber = true
-    end
-  end,
-})
-
 
 -- https://github.com/echasnovski/mini.nvim/discussions/33
 -- Disable noname buffer
@@ -41,3 +27,4 @@ end
 
 vim.api.nvim_create_autocmd({ 'BufAdd', 'BufFilePost' }, { callback = unlist_unnamed })
 vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = unlist_unnamed_all })
+

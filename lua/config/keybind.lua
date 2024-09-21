@@ -47,8 +47,5 @@ keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 -- Delete floating windows
 keymap.set('n', '<ESC>', "<cmd>:only<cr>")
 -- Buffer
--- H/L to next buffer/previous buffer
-keymap.set('n', 'L', '<cmd>:bnext<cr>', { noremap = true, silent = true })
-keymap.set('n', 'H', '<cmd>:bprev<cr>', { noremap = true, silent = true })
-vim.opt.wildcharm = vim.fn.char2nr('\26')
--- Map <Tab> to trigger buffer switching with wildcharm
+  vim.api.nvim_set_keymap('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', 'H', ':bprev<CR>', { noremap = true, silent = true })
