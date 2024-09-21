@@ -19,15 +19,27 @@ function M.pick_buffer_and_split(split_cmd)
         print("No buffer chosen, keeping empty buffer.")
     end
 end
-
+-- Pick todo-hightlight
 function M.pick_todo()
-    vim.ui.select({'apple', 'banana', 'mango'}, {
-        prompt = "Title",
-        -- telescope = require("telescope.themes").get_cursor(),
-      }, 
-      function(selected)
-        print(selected)
+    vim.ui.select({'TODO', 'FIXME'}, {
+        prompt = "Select a highlight type",
+    }, 
+    function(selected)
+        if selected then
+            -- Get the current cursor position
+            local cursor_pos = vim.api.nvim_win_get_cursor(0) -- Get the current cursor position
+            local line_number = cursor_pos[1]
+            local col_number = cursor_pos[2]
+
+            -- Replace the text at the current cursor position
+            vim.api.nvim_buf_set_text(0, line_number - 1, col_number, line_number - 1, col_number, {selected})
+        else
+            print("No selection made")
+        end
     end)
-    
 end
+
+
+
+
 return M
