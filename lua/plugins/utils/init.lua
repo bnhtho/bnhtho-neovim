@@ -1,5 +1,13 @@
 -- What to do: add some utils plugins (usually small- default config)
--- Which Key
+local win_config = function()
+    height = 30
+    width = 60
+    return {
+      anchor = 'NW', height = height, width = width,
+      row = math.floor(0.5 * (vim.o.lines - height)),
+      col = math.floor(0.5 * (vim.o.columns - width)),
+    }
+  end
 return
 {
 	-- mini.move
@@ -39,6 +47,13 @@ return
 		opts = {},
 	},
 	{ 'echasnovski/mini.bufremove', version = '*', opts = {} },
+	{ 'echasnovski/mini.pick',      version = '*', 
+	
+	  
+	opts = {
+		window = { config = win_config }
+	} 
+},
 	-- Tabline
 	{ 'echasnovski/mini.tabline',   version = '*', opts = {} },
 	{
