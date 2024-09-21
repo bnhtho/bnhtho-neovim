@@ -67,9 +67,11 @@ return
 			},
 			signs = true,
 			highlight = {
+				keyword = 'fg',
 				pattern = [[.*<(KEYWORDS)\s*]],
 			},
 			search = {
+				keyword = 'fg',
 				pattern = [[\b(KEYWORDS)\b]],
 			},
 		}
