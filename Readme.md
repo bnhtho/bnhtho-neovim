@@ -40,7 +40,6 @@ This is my readme for my personal neovim configs
 | Command | <kbd>Up</kbd> | Move up the autocomplete suggestion list |
 
 </details>
-
 ---
 <details>
 

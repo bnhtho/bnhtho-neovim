@@ -26,7 +26,7 @@ return
 			)
 		end
 	},
-	
+
 	{
 		'numToStr/Comment.nvim',
 		config = function()
@@ -38,7 +38,25 @@ return
 		main = "ibl",
 		opts = {},
 	},
-	{ 'echasnovski/mini.bufremove', version = '*',      opts = {} },
+	{ 'echasnovski/mini.bufremove', version = '*', opts = {} },
 	-- Tabline
-	{ 'echasnovski/mini.tabline',   version = '*',      opts = {} },
+	{ 'echasnovski/mini.tabline',   version = '*', opts = {} },
+	{
+		'folke/todo-comments.nvim',
+		-- event = 'VimEnter',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = {
+			gui_style = {
+				bg = "NONE", -- The gui style to use for the bg highlight group.
+				fg = "NONE", -- The gui style to use for the bg highlight group.
+			},
+			signs = true,
+			highlight = {
+				pattern = [[.*<(KEYWORDS)\s*]],
+			},
+			search = {
+				pattern = [[\b(KEYWORDS)\b]],
+			},
+		}
+	},
 }
