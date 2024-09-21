@@ -37,3 +37,5 @@ options.mousemodel = 'extend'
 -- Split
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+

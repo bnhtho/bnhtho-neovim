@@ -49,3 +49,10 @@ keymap.set('n', '<ESC>', "<cmd>:only<cr>")
 -- Buffer
   vim.api.nvim_set_keymap('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', 'H', ':bprev<CR>', { noremap = true, silent = true })
+  
+keymap.set('n', '<leader>h', function()
+    custom_key.pick_todo()
+end)
+
+
+  

@@ -19,4 +19,15 @@ function M.pick_buffer_and_split(split_cmd)
         print("No buffer chosen, keeping empty buffer.")
     end
 end
+
+function M.pick_todo()
+    vim.ui.select({'apple', 'banana', 'mango'}, {
+        prompt = "Title",
+        -- telescope = require("telescope.themes").get_cursor(),
+      }, 
+      function(selected)
+        print(selected)
+    end)
+    
+end
 return M
