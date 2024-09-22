@@ -40,6 +40,9 @@ keymap.set('n', '<ESC>', "<cmd>:only<cr>")
 vim.api.nvim_set_keymap('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', ':bprev<CR>', { noremap = true, silent = true })
 -- NOTE : Hightlight
-keymap.set('n', '<leader>h', function()
+keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
 end)
+-- NOTE: Telescope
+keymap.set("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
+keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")

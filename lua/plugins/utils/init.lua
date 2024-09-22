@@ -40,6 +40,8 @@ return
 		'folke/todo-comments.nvim',
 		-- event = 'VimEnter',
 		dependencies = { 'nvim-lua/plenary.nvim' },
+
+		cmd = { "TodoTelescope" },
 		opts = {
 			gui_style = {
 				bg = "NONE", -- The gui style to use for the bg highlight group.
