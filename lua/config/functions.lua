@@ -29,8 +29,6 @@ local function get_comment_format()
 end
 
 local function toggle_comment(highlight)
-    print(highlight)
-
     -- Get the current cursor position
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
     local line_number = cursor_pos[1]
@@ -43,25 +41,32 @@ local function toggle_comment(highlight)
     local comment_start = comment_format.comment_start .. highlight .. ": "
     local comment_end = comment_format.comment_end
 
-    -- Check if the line already contains the highlight in the comment format
-    local highlight_start = line:find(comment_start)
-    if highlight_start then
-        -- Highlight exists, remove the entire comment
-        local new_line = line:gsub(comment_start .. "(.-)" .. comment_end, "%1", 1) -- Keep only the text inside the comment
+    -- Pattern to match existing comments
+    local comment_pattern = vim.pesc(comment_format.comment_start) .. "(%w+): (.*)" .. vim.pesc(comment_end)
+
+    -- Check if the line already contains a comment
+    local existing_comment = line:match(comment_pattern)
+    if existing_comment then
+        -- Extract the inner text and the existing highlight
+        local current_highlight, inner_text = line:match(comment_pattern)
+        
+        -- Create the new line with the new highlight and the preserved inner text
+        local new_line = comment_start .. inner_text .. comment_end
         vim.api.nvim_set_current_line(new_line)
 
-        -- Move cursor back to the position before the highlight
-        vim.api.nvim_win_set_cursor(0, { line_number, highlight_start - 1 })
+        -- Move cursor to the end of the new comment
+        vim.api.nvim_win_set_cursor(0, { line_number, #comment_start + #inner_text + 2 }) -- +2 for ": "
     else
-        -- Highlight does not exist, add the comment around the current text
+        -- Add the comment around the current text
         local new_line = comment_start .. line .. comment_end
         vim.api.nvim_set_current_line(new_line)
 
-        -- Move cursor to the position after the inserted highlight
-        vim.api.nvim_win_set_cursor(0, { line_number, #new_line })
+        -- If the line was empty, place the cursor after the comment start
+        if line == "" then
+            vim.api.nvim_win_set_cursor(0, { line_number, #comment_start })
+        end
     end
 end
-
 
 
 
