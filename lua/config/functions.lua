@@ -51,17 +51,18 @@ local function toggle_comment(highlight)
         vim.api.nvim_win_set_cursor(0, { line_number, highlight_start - 1 })
     else
         -- Highlight does not exist, add it
-        local new_line = line:sub(1, col_number) .. highlight .. ' ' .. line:sub(col_number + 2) .. ''
+        local new_line = line:sub(1, col_number) .. highlight .. ' ' .. line:sub(col_number + 2) .. ':'
         vim.api.nvim_set_current_line(new_line)
         -- Comment that new_line
         require('Comment.api').toggle.linewise.current(new_line)
         -- Move cursor to the position after the inserted highlight :
         vim.api.nvim_win_set_cursor(0, { line_number, col_number + str_length(highlight) + str_length(highlight) })
+        -- vim.cmd('normal! ^[o')
     end
 end 
 
 function M.pick_todo()
-    vim.ui.select({'TODO', 'FIXME'}, {
+    vim.ui.select({'TODO', 'FIXME','WARN','TEST'}, {
         prompt = "Select a highlight type",
     }, 
     function(selected)
