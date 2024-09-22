@@ -21,6 +21,7 @@ local function get_comment_format()
         c = { comment_start = "/* ", comment_end = " */" },
         cpp = { comment_start = "// ", comment_end = "" },
         vim = { comment_start = "\" ", comment_end = "" },
+        css = { comment_start = "/*" , comment_end = "*/" },
         -- Add more filetypes and comment formats here
     }
 
