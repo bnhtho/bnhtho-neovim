@@ -51,7 +51,7 @@ local function toggle_comment(highlight)
         vim.api.nvim_win_set_cursor(0, { line_number, highlight_start - 1 })
     else
         -- Highlight does not exist, add it
-        local new_line = line:sub(1, col_number) .. highlight .. ' ' .. line:sub(col_number + 2) .. ':'
+        local new_line = line:sub(1, col_number) .. highlight
         vim.api.nvim_set_current_line(new_line)
         -- Comment that new_line
         require('Comment.api').toggle.linewise.current(new_line)
@@ -68,6 +68,8 @@ function M.pick_todo()
     function(selected)
         if selected then
             toggle_comment(selected)
+            -- vim.api.nvim_feedkeys("<Space>", "n", false)
+            vim.api.nvim_feedkeys("a : ", "n", false)
         end
     end)
 end
