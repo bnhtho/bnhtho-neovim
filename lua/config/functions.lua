@@ -20,6 +20,13 @@ function M.pick_buffer_and_split(split_cmd)
     end
 end
 -- Pick todo-hightlight
+-- Utility function to toggle comment
+-- Function to toggle comment using Comment.nvim
+local function toggle_comment(line_number)
+    -- Use Comment.nvim's API to toggle comment for the current line
+    require('Comment.api').toggle.linewise.current(line_number)
+end
+
 function M.pick_todo()
     vim.ui.select({'TODO', 'FIXME'}, {
         prompt = "Select a highlight type",
@@ -27,18 +34,20 @@ function M.pick_todo()
     function(selected)
         if selected then
             -- Get the current cursor position
-            local cursor_pos = vim.api.nvim_win_get_cursor(0) -- Get the current cursor position
+            local cursor_pos = vim.api.nvim_win_get_cursor(0) 
             local line_number = cursor_pos[1]
             local col_number = cursor_pos[2]
 
-            -- Replace the text at the current cursor position
+            -- Insert the selected text at the cursor position
             vim.api.nvim_buf_set_text(0, line_number - 1, col_number, line_number - 1, col_number, {selected})
+
+            -- Toggle comment using Comment.nvim
+            toggle_comment(line_number)
         else
             print("No selection made")
         end
     end)
 end
-
 
 
 
