@@ -28,7 +28,7 @@ local mode_colors = {
   Terminal = colors.color8,
 }
 
-------------------------//SECTION: Statusline Functions --------------------------
+------------------------// SECTION: Statusline Functions --------------------------
 
 local tmux_status = require('tmux-status')
 local diff = require('gitsigns')
@@ -52,6 +52,20 @@ local function gen_section(items)
     end
   end
   return bracket_left .. out .. bracket_right
+end
+
+-- Function to get Neo-tree offset if open
+local function get_neotree_offset()
+  local manager = require("neo-tree.sources.manager")
+  local renderer = require("neo-tree.ui.renderer")
+  local state = manager.get_state("filesystem")
+  
+  -- If Neo-tree is open, return an offset (e.g., 10 spaces)
+  if renderer.window_exists(state) then
+    return string.rep(" ", 40)  -- Adjust this number for desired offset
+  else
+    return ""
+  end
 end
 
 -- Maps vim modes to user-friendly names
@@ -170,7 +184,8 @@ function Status_line()
   vim.api.nvim_command('hi StatusLineMode guifg=' .. mode_color .. ' guibg=NONE')
 
   return table.concat({
-    "%#StatusLineMode#",  -- Set mode-specific color
+    get_neotree_offset(),         -- Add offset for Neo-tree if open
+    "%#StatusLineMode#",          -- Set mode-specific color
     gen_section({ get_mode_group_display_name(mode_group) }),
     " ",
     gen_section({ get_diff() or "" }),
@@ -183,51 +198,3 @@ function Status_line()
 end
 
 vim.o.statusline = "%!luaeval('Status_line()')"
-
------------------------------------------------------------------
-
--- Function to switch to an existing buffer or create a new one
-function switch_or_create_buffer()
-  vim.ui.input({
-    prompt = "Buffer: ",
-    completion = "buffer"  -- Enable command-line completion
-  }, function(input)
-    if not input or input == "" then return end
-
-    local buffer_exists = false
-    local buffer_name = vim.fn.expand(input) -- Expand to handle path characters
-    local buffer_id = nil
-
-    -- Check if the buffer exists
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) == buffer_name then
-        buffer_exists = true
-        buffer_id = buf
-        break
-      end
-    end
-
-    -- If buffer exists, focus on it
-    if buffer_exists then
-      local buffer_in_split = false
-      
-      -- Check if buffer is already in a split window
-      for _, win in ipairs(vim.api.nvim_list_wins()) do
-        if vim.api.nvim_win_get_buf(win) == buffer_id then
-          -- Buffer is in a split; focus on this window
-          vim.api.nvim_set_current_win(win)
-          buffer_in_split = true
-          break
-        end
-      end
-
-      -- If the buffer is not in a split window, switch to it in a new split
-      if not buffer_in_split then
-        vim.cmd('buffer ' .. buffer_name)
-      end
-    else
-      print("404")
-    end
-  end)
-end
-

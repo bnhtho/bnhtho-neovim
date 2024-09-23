@@ -14,6 +14,7 @@ return {
 
 		-- Windows Mapping
 		window = {
+			width = 40,
 			mappings = {
 				["<Tab>"] = { function(state)
 					state.commands["open"](state)

@@ -33,7 +33,7 @@ return
 		opts = {},
 	},
 	{ 'echasnovski/mini.bufremove', version = '*',   opts = {} },
-	{ 'echasnovski/mini.tabline',   version = '*',   opts = {} },
+	-- { 'echasnovski/mini.tabline',   version = '*',   opts = {} },
 	{ 'echasnovski/mini.pairs',     version = false, opts = {} },
 	{
 
