@@ -34,8 +34,6 @@ if vim.o.wrap then
 end
 keymap.set('n', 'q:', function() end)
 keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
--- Delete floating windows
-keymap.set('n', '<ESC>', "<cmd>:only<cr>")
 -- Buffer
 vim.api.nvim_set_keymap('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', ':bprev<CR>', { noremap = true, silent = true })

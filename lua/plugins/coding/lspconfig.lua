@@ -1,7 +1,6 @@
 --author: thohnb
 -- What to do? Add lsp to neovim and all lspconfig
 return {
-   
     {
         -- Mason
         "williamboman/mason.nvim",
@@ -10,17 +9,26 @@ return {
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
             {
-                'nvimdev/lspsaga.nvim',
+                "WhoIsSethDaniel/mason-tool-installer.nvim",
+                requires = {
+                    "williamboman/mason.nvim"
+                },
                 config = function()
-                    require('lspsaga').setup({
-                        symbol_in_winbar = {
-                            enable = false,
+                    require("mason-tool-installer").setup(
+                        {
+                            ensure_installed = {
+                                -- -- Formatter
+                                "black",
+                                "prettier",
+                                "prettier",
+                                "prettierd"
+                            }
                         }
-                    })
-                end,
-            },
+                    )
+                end
+            }
         },
-        event = { "BufReadPost", "BufNewFile" },
+        event = {"BufReadPost", "BufNewFile"},
         config = function()
             local mason = require("mason")
             local mason_lsp = require("mason-lspconfig")
@@ -44,8 +52,7 @@ return {
                         "pylsp",
                         -- Markdown
                         "marksman",
-                        "sqlls",
-                        
+                        "sqlls"
                     }
                 }
             )
@@ -67,14 +74,10 @@ return {
             )
             -- Keymap on_attach
             local on_attach = function(client, bufnr)
-              -- usage lspsaga for attach
-              print("attached ")
+                -- Keyboard 
+                local keymap = vim.keymap
             end
-            
-            --
-            -- Setup LSP.
-            -- You can add more LSP servers here
-            -- Python
+
             lspconfig.pylsp.setup {
                 capabilities = capabilities,
                 plugins = {
@@ -82,68 +85,31 @@ return {
                         enabled = true
                     }
                 },
-                on_attach = on_attach,
+                on_attach = on_attach
             }
             -- C++
             lspconfig.clangd.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = on_attach
             }
             -- Markdown
             lspconfig.marksman.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = on_attach
             }
             lspconfig.lua_ls.setup {
                 capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = on_attach
             }
             lspconfig.sqlls.setup {
                 capabilities = capabilities,
                 root_dir = function(_)
                     return vim.loop.cwd()
                 end,
-                on_attach = on_attach,
+                on_attach = on_attach
             }
-
-            -- Setup nvim-cmp.
         end
-    },
-    -- Install tools
-    {
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
-        requires = {
-            'williamboman/mason.nvim',
-        },
-        config = function()
-            require('mason-tool-installer').setup({
-                ensure_installed = {
-                   -- -- Formatter
-                        "black",
-                        "prettier",
-                        "prettier",
-                        "prettierd"
-                },
-            })
-        end,
-    },
-    -- Lazy Dev
-    {
-		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-        event = { "BufReadPost", "BufNewFile" },
-		opts = {
-			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-			},
-		},
-	},
-    { "Bilal2453/luvit-meta", lazy = true },
-    ---------------------- LSP Saga
-   
-
+    }
 }
