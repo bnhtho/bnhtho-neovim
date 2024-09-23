@@ -29,7 +29,6 @@ local mode_colors = {
 }
 
 ------------------------// SECTION: Statusline Functions --------------------------
-
 local tmux_status = require('tmux-status')
 local diff = require('gitsigns')
 
@@ -194,6 +193,7 @@ function Status_line()
     " ",
     gen_section({ setup_tmux() }),
     gen_section({ "Ln %l, Col %c" }),
+    
   })
 end
 

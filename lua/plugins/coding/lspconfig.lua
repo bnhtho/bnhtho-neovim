@@ -8,7 +8,17 @@ return {
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
-            "hrsh7th/cmp-nvim-lsp"
+            "hrsh7th/cmp-nvim-lsp",
+            {
+                'nvimdev/lspsaga.nvim',
+                config = function()
+                    require('lspsaga').setup({
+                        symbol_in_winbar = {
+                            enable = false,
+                        }
+                    })
+                end,
+            },
         },
         event = { "BufReadPost", "BufNewFile" },
         config = function()
@@ -57,12 +67,8 @@ return {
             )
             -- Keymap on_attach
             local on_attach = function(client, bufnr)
-                -- Enable completion triggered by <c-x><c-o>
-                vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-            
-                -- See `:help vim.lsp.*` for documentation on any of the below functions
-                local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                -- Setup lspsaga here
+              -- usage lspsaga for attach
+              print("attached ")
             end
             
             --
@@ -70,7 +76,6 @@ return {
             -- You can add more LSP servers here
             -- Python
             lspconfig.pylsp.setup {
-                -- on_attach = on_attach,
                 capabilities = capabilities,
                 plugins = {
                     rope_import = {
@@ -139,15 +144,6 @@ return {
 	},
     { "Bilal2453/luvit-meta", lazy = true },
     ---------------------- LSP Saga
-    {
-        "hedyhli/outline.nvim",
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = { -- Example mapping to toggle outline
-          { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-        },
-        opts = {
-          -- Your setup opts here
-        },
-      }
+   
+
 }
