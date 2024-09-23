@@ -46,3 +46,9 @@ end)
 -- NOTE: Telescope
 keymap.set("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")
+
+
+-- Bufferline 0 - 9
+for i = 1, 9 do
+	keymap.set('n', '<leader>' .. i, '<Cmd>BufferLineGoToBuffer ' .. i .. '<CR>', { noremap = true, silent = true })
+  end

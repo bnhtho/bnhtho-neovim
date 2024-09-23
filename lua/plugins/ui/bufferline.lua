@@ -3,14 +3,14 @@ config = function()
     local bufferline = require("bufferline")
     require("bufferline").setup {
         options = {
-            style_preset = bufferline.style_preset.minimal,
-            color_icons = false,
-            diagnostics = false,
-            indicator = {
-                icon = '', -- this should be omitted if indicator style is not 'icon'
-                style = 'underline'
-            },
-             separator_style = {"",""},
+          -- style_preset = bufferline.style_preset.minimal,
+          color_icons = false,
+          diagnostics = false,
+          show_close_icon = false,
+          show_buffer_close_icons = false,
+          show_tab_indicators = false,
+          close_icon = '',
+          separator_style = {"",""},
           offsets = {
             {
               filetype = "neo-tree",
