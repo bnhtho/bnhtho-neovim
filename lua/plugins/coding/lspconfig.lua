@@ -65,17 +65,25 @@ return {
                 require("cmp_nvim_lsp").default_capabilities()
             )
             capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-            vim.lsp.handlers["textDocument/publishDiagnostics"] =
-                vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics,
-                {
-                    update_in_insert = true
-                }
-            )
-            -- Keymap on_attach
+            -- Setup Border
+            vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+            vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+    
+            -- LSP settings (for overriding per client)
+            local handlers = {
+                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"}),
+                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"}),
+                
+            }
+            
+            -- End of setup border
             local on_attach = function(client, bufnr)
-                -- Keyboard 
+                -- Keyboard
                 local keymap = vim.keymap
+                keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+                keymap.set("n", "K", vim.lsp.buf.hover)
+                keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
             end
 
             lspconfig.pylsp.setup {
@@ -85,30 +93,35 @@ return {
                         enabled = true
                     }
                 },
-                on_attach = on_attach
+                on_attach = on_attach,
+                handlers=handlers
             }
             -- C++
             lspconfig.clangd.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities,
-                on_attach = on_attach
+                on_attach = on_attach,
+                handlers=handlers
             }
             -- Markdown
             lspconfig.marksman.setup {
                 -- on_attach = on_attach,
                 capabilities = capabilities,
-                on_attach = on_attach
+                on_attach = on_attach,
+                handlers=handlers
             }
             lspconfig.lua_ls.setup {
                 capabilities = capabilities,
-                on_attach = on_attach
+                on_attach = on_attach,
+                handlers=handlers
             }
             lspconfig.sqlls.setup {
                 capabilities = capabilities,
                 root_dir = function(_)
                     return vim.loop.cwd()
                 end,
-                on_attach = on_attach
+                on_attach = on_attach,
+                handlers=handlers
             }
         end
     }
