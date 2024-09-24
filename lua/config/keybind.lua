@@ -42,5 +42,4 @@ keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
 end)
 -- NOTE: Telescope
-keymap.set("n", "<leader>g", "<cmd>Telescope live_grep<cr>")
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")
