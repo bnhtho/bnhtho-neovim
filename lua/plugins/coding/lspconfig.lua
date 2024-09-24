@@ -8,6 +8,10 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
+            -- Qbf
+            {
+                "yorickpeterse/nvim-pqf",opts ={}
+            },
             {
                 "WhoIsSethDaniel/mason-tool-installer.nvim",
                 requires = {
@@ -74,7 +78,6 @@ return {
             local handlers = {
                 ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"}),
                 ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {border = "rounded"}),
-                
             }
             
             -- End of setup border
@@ -83,7 +86,9 @@ return {
                 local keymap = vim.keymap
                 keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
                 keymap.set("n", "K", vim.lsp.buf.hover)
-                keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+                -- Diagnostic: Show list lock
+                keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+                
             end
 
             lspconfig.pylsp.setup {

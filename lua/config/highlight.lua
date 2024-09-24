@@ -35,36 +35,3 @@ vim.api.nvim_set_hl(0, 'NormalNC', { bg = "NONE" })
 vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "NONE" })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828" })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
---  Mini.Tabline
-vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = '#292828' })
-vim.api.nvim_set_hl(0, 'MiniTablineCurrent', { bg = '#292828', fg = '#D2A655' })         -- Active buffer
-vim.api.nvim_set_hl(0, 'MiniTablineVisible', { bg = '#292828', fg = 'NONE' })            -- Visible buffer
-vim.api.nvim_set_hl(0, 'MiniTablineHidden', { bg = '#292828', fg = '#a0a0a0' })          -- Inactive buffer (gray)
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedCurrent', { bg = '#3c3c3c', fg = '#D2A655' }) -- Active modified buffer
-vim.api.nvim_set_hl(0, 'MiniTablineModifiedVisible', { bg = '#292828', fg = '#D2A655' }) -- Visible modified buffer
-vim.api.nvim_set_hl(0, 'MiniTablineFill', { bg = '#292828' })                            -- Fill area
-vim.api.nvim_set_hl(0, 'MiniTablineTabpagesection', { bg = '#292828', fg = '#ffffff' })  -- Tabpage section
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#a0a0a0' })
-
-
--- Bufferline
-local hl = vim.api.nvim_set_hl
--- Underline UI (Done)
-hl(0, "BufferLineDiagnosticSelected", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineHint", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineDiagnosticVisible", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineInfo", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineCloseButtonSelected", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineFill", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineCloseButtonVisible", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineOffsetSeparator", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLinePickVisible", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLinePickSelected", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineIndicatorSelected", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineTabSeparatorSelected", { bg = "#292828", fg = "#D2A655" })
-hl(0, "BufferLineTabSeparator", { bg = "#292828", fg = "#D2A655" })
--- hl(0, "BufferLineDuplicate", { bg = "#292828", fg = "#D2A655" })
-hl(0, "WinBar", { bg = "#292828", fg = "#D2A655" })
-hl(0, "WinBarNC", { bg = "#292828", fg = "#D2A655" })
--- End Underline UI
-hl(0, 'BufferLineDevIconPySelected', { underline = true ,fg = Comment})
