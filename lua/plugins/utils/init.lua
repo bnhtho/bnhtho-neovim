@@ -64,5 +64,6 @@ return
 			require('Comment').setup()
 		end
 	},
-	
-	}
+	-- NOTE: mini.hi
+	{ 'echasnovski/mini.hipatterns', version = '*', opts = {} },
+}

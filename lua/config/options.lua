@@ -38,4 +38,10 @@ options.mousemodel = 'extend'
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-
+local hipatterns = require('mini.hipatterns')
+hipatterns.setup({
+	highlighters = {
+		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+		hex_color = hipatterns.gen_highlighter.hex_color(),
+	},
+})

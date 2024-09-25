@@ -5,7 +5,6 @@ This is my readme for my personal neovim configs
 <details>
   <summary>Coding</summary>
 
-
 | Mode    | Keymap      | Function                                                   |
 |---------|-------------|------------------------------------------------------------|
 | Normal  | <kbd><leader></kbd> + <kbd>a</kbd> | Select all lines from the cursor position to the end of the file |
