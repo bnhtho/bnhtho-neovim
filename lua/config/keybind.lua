@@ -2,7 +2,7 @@
 
 local keymap = vim.keymap
 local custom_key = require('config.functions')
-
+local builtin = require('telescope.builtin')
 keymap.set("n", "<leader>a", "gg<S-v>G")
 
 -- Moving around windows using s + h,j,k,l
@@ -12,8 +12,8 @@ keymap.set("n", "<leader>k", "<C-w>k")
 keymap.set("n", "<leader>l", "<C-w>l")
 
 -- Split windows
-keymap.set('n', 'ss', ':split<cr><C-w>w')
-keymap.set('n', 'sv', ':vsplit<cr><C-w>w')
+keymap.set('n', 'sj', ':split<cr><C-w>w')
+keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
 -- Save file
 keymap.set("n", "<C-s>", ":w<cr>")
 -- Move lines and group lines left, right
@@ -34,12 +34,10 @@ if vim.o.wrap then
 end
 keymap.set('n', 'q:', function() end)
 keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
--- Buffer
-vim.api.nvim_set_keymap('n', 'L', ':bnext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', 'H', ':bprev<CR>', { noremap = true, silent = true })
 -- NOTE : Hightlight
 keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
 end)
 -- NOTE: Telescope
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")
+keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Telescope buffers' })
