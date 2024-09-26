@@ -41,3 +41,6 @@ end)
 -- NOTE: Telescope
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")
 keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Telescope buffers' })
+
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')

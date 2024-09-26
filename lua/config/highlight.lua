@@ -50,4 +50,7 @@ vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#a0a0a0' })
 
 -- NOTE: Incline
 vim.api.nvim_set_hl(0, 'InclineNormal', { bg = 'NONE', fg = '#80AA9E' })
+-- NOTE: Highlight hlnes
+vim.api.nvim_set_hl(0, 'HlSearchLens', {fg = 'darkgray' })
+vim.api.nvim_set_hl(0, 'HlSearchLensNear', {fg = 'darkgray' })
 

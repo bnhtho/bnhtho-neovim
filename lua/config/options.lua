@@ -45,3 +45,5 @@ hipatterns.setup({
 		hex_color = hipatterns.gen_highlighter.hex_color(),
 	},
 })
+
+vim.opt.hlsearch = true
