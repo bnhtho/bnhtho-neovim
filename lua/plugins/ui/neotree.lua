@@ -20,15 +20,8 @@ return {
 					state.commands["open"](state)
 					vim.cmd("Neotree")
 				end },
-				["L"] = { function(state)
-					return ""
-				end
-				},
-				["H"] = { function(state)
-					return ""
-				end
-				}
-
+				["J"] = "open_split",
+				["L"] = "open_rightbelow_vs"
 			},
 		},
 		-- recommanded config for better UI
