@@ -15,8 +15,8 @@ keymap.set("n", "<leader>l", "<C-w>l")
 keymap.set('n', 'sj', ':split<cr><C-w>w')
 keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
 -- Buffer split
-keymap.set('n', 'L', '<cmd>:bprev<cr>',{ noremap = false, silent = true })
-keymap.set('n', 'H', '<cmd>:bnext<cr>',{ noremap = false, silent = true })
+keymap.set('n', 'L', '<cmd>:bprev<cr>', { noremap = false, silent = true })
+keymap.set('n', 'H', '<cmd>:bnext<cr>', { noremap = false, silent = true })
 -- Save file
 keymap.set("n", "<C-s>", ":w<cr>")
 -- Move lines and group lines left, right
@@ -47,3 +47,4 @@ keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Telescope buffers' })
 
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>o', '<cmd>:Telescope aerial<CR>')

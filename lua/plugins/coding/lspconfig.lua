@@ -8,14 +8,11 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
-            -- Qbf
-            {
-                "yorickpeterse/nvim-pqf",opts ={}
-            },
+            "mfussenegger/nvim-jdtls",
             {
                 "WhoIsSethDaniel/mason-tool-installer.nvim",
-                requires = {
-                    "williamboman/mason.nvim"
+                dependencies = {
+                    {"williamboman/mason.nvim",opts ={} }
                 },
                 config = function()
                     require("mason-tool-installer").setup(
@@ -54,6 +51,8 @@ return {
                         "rust_analyzer",
                         "clangd",
                         "pylsp",
+                        "jdtls", -- Java Language
+
                         -- Markdown
                         "marksman",
                         "sqlls"
@@ -125,6 +124,12 @@ return {
                 root_dir = function(_)
                     return vim.loop.cwd()
                 end,
+                on_attach = on_attach,
+                handlers=handlers
+            }
+            -- Java
+            lspconfig.jdtls.setup {
+                capabilities = capabilities,
                 on_attach = on_attach,
                 handlers=handlers
             }

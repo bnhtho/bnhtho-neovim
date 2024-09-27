@@ -30,13 +30,13 @@ options.swapfile = false
 options.termguicolors = true
 options.updatetime = 200
 -- Disable Mouse
--- vim.opt.mouse = ''
+-- options.mouse = ''
 options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
 
 -- Split
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+options.splitright = true
+options.splitbelow = true
 
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({
@@ -46,4 +46,5 @@ hipatterns.setup({
 	},
 })
 
-vim.opt.hlsearch = true
+options.hlsearch = true
+
