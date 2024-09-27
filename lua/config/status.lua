@@ -152,20 +152,20 @@ local function get_lsp_diagnostics(bufnr)
   return result
 end
 
--- Sets up diagnostics section
-local function setup_diagnostics()
-  local diagnostics = get_lsp_diagnostics(0)
-  local errors = diagnostics.errors
-  local warnings = diagnostics.warnings
-  if errors == 0 and warnings == 0 then
-    return ""
-  else
-    return table.concat{
-      process_diagnostics(" ", errors),
-      process_diagnostics("  ", warnings),
-    }
-  end
-end
+-- -- Sets up diagnostics section
+-- local function setup_diagnostics()
+--   local diagnostics = get_lsp_diagnostics(0)
+--   local errors = diagnostics.errors
+--   local warnings = diagnostics.warnings
+--   if errors == 0 and warnings == 0 then
+--     return ""
+--   else
+--     return table.concat{
+--       process_diagnostics(" ", errors),
+--       process_diagnostics("  ", warnings),
+--     }
+--   end
+-- end
 
 -- Sets up Tmux status
 local function setup_tmux()
@@ -184,15 +184,14 @@ function Status_line()
 
   return table.concat({
     get_neotree_offset(),         -- Add offset for Neo-tree if open
-    "%#StatusLineMode#",          -- Set mode-specific color
     gen_section({ get_mode_group_display_name(mode_group) }),
+    "%#StatusLineMode#",          -- Set mode-specific color
     " ",
-    gen_section({ get_diff() or "" }),
+    -- gen_section({ get_diff() or "" }),
     "%=",
-    gen_section({ setup_diagnostics() }),
+    -- gen_section({ setup_diagnostics() }),
     " ",
-    gen_section({ setup_tmux() }),
-    gen_section({ "Ln %l, Col %c" }),
+    -- gen_section({ "Ln %l, Col %c" }),
     
   })
 end

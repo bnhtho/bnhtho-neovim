@@ -14,6 +14,9 @@ keymap.set("n", "<leader>l", "<C-w>l")
 -- Split windows
 keymap.set('n', 'sj', ':split<cr><C-w>w')
 keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
+-- Buffer split
+keymap.set('n', 'L', '<cmd>:bprev<cr>',{ noremap = false, silent = true })
+keymap.set('n', 'H', '<cmd>:bnext<cr>',{ noremap = false, silent = true })
 -- Save file
 keymap.set("n", "<C-s>", ":w<cr>")
 -- Move lines and group lines left, right

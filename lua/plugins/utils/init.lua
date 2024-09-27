@@ -66,14 +66,7 @@ return
 	},
 	-- NOTE: mini.hi
 	{ 'echasnovski/mini.hipatterns', version = '*', opts = {} },
-	-- Dropbar
-	{
-		'Bekaboo/dropbar.nvim',
-		-- optional, but required for fuzzy finder support
-		dependencies = {
-			'nvim-telescope/telescope-fzf-native.nvim'
-		}
-	},
+	
 	-- Ripgrep
 	{
 		"chrisgrieser/nvim-rip-substitute",
