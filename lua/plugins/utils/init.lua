@@ -37,9 +37,8 @@ return
 	{
 
 		'folke/todo-comments.nvim',
-		-- event = 'VimEnter',
+		event = 'VimEnter',
 		dependencies = { 'nvim-lua/plenary.nvim' },
-
 		cmd = { "TodoTelescope" },
 		opts = {
 			gui_style = {
