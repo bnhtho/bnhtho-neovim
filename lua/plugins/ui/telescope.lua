@@ -3,6 +3,7 @@ return {
 	dependencies = {
 	  'nvim-lua/plenary.nvim',
 	  'jonarrien/telescope-cmdline.nvim',
+	  "LinArcX/telescope-command-palette.nvim"
 	},
 	opts = function()
 	  local actions = require('telescope.actions')
@@ -46,12 +47,14 @@ return {
 			show_columns = "both",
 		  },
 		  cmdline = {
-			-- mappings    = {
-			--   complete      = '<Tab>',
-			--   run_selection = '<C-CR>',
-			--   run_input     = '<CR>',
-			-- },
+			mappings    = {
+			  complete      = '<Tab>',
+			  run_selection = '<CR>',
+			  run_input     = '<CR>',
+			},
 		  },
+		  --
+		  
 		},
 	  }
 	end,

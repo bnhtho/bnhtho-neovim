@@ -34,6 +34,7 @@ return
 	},
 	{ 'echasnovski/mini.bufremove', version = '*',   opts = {} },
 	{ 'echasnovski/mini.pairs',     version = false, opts = {} },
+	
 	{
 
 		'folke/todo-comments.nvim',
@@ -83,12 +84,5 @@ return
 	{
 		'stevearc/dressing.nvim',
 		opts = {},
-	  },
-	  
-	  {
-		'VonHeikemen/fine-cmdline.nvim',
-  dependencies = {
-    {'MunifTanjim/nui.nvim'}
-  }
-	  }
-}
+	},
+	} 

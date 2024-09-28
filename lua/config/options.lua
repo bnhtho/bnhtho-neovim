@@ -47,4 +47,3 @@ hipatterns.setup({
 })
 
 options.hlsearch = true
-

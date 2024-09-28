@@ -3,20 +3,21 @@
 local keymap = vim.keymap
 local custom_key = require('config.functions')
 local builtin = require('telescope.builtin')
-keymap.set("n", "<leader>a", "gg<S-v>G")
+keymap.set("n", "<leader>a", "gg<S-v>G",{desc = "Select All"})
 
 -- Moving around windows using s + h,j,k,l
-keymap.set("n", "<leader>h", "<C-w>h")
-keymap.set("n", "<leader>j", "<C-w>j")
-keymap.set("n", "<leader>k", "<C-w>k")
-keymap.set("n", "<leader>l", "<C-w>l")
+keymap.set("n", "<leader>h", "<C-w>h",{desc = "Focus Left Window"})
+keymap.set("n", "<leader>j", "<C-w>j",{desc = "Focus Lower Window"})
+keymap.set("n", "<leader>k", "<C-w>k",{desc = "Focus Upper Window"})
+keymap.set("n", "<leader>l", "<C-w>l",{desc = "Focus Right Window"})
 
 -- Split windows
-keymap.set('n', 'sj', ':split<cr><C-w>w')
-keymap.set('n', 'sl', ':vsplit<cr><C-w>w')
+keymap.set('n', 'sj', ':split<cr><C-w>w',{desc = "Split Down"})
+keymap.set('n', 'sl', ':vsplit<cr><C-w>w',{desc = "Split Right"})
 -- Buffer split
-keymap.set('n', 'L', '<cmd>:bprev<cr>', { noremap = false, silent = true })
-keymap.set('n', 'H', '<cmd>:bnext<cr>', { noremap = false, silent = true })
+keymap.set('n', 'L', '<cmd>:bprev<cr>', { noremap = false, silent = true },{desc = "Switch To Last Buffer"})
+keymap.set('n', 'H', '<cmd>:bnext<cr>', { noremap = false, silent = true },{desc = "Switch To Next Buffer"})
+keymap.set("n", "W", "<cmd>:bdelete<cr>", { noremap = false, silent = true,desc= "Delete Current Buffer" })
 -- Save file
 keymap.set("n", "<C-s>", ":w<cr>")
 -- Move lines and group lines left, right
@@ -28,7 +29,6 @@ keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
 keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
 keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
 keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
-keymap.set("n", "W", "<cmd>:bdelete<cr>", { noremap = false, silent = true })
 keymap.set("n", "D", "<Cmd>copy.<Cr>")
 keymap.set("x", "D", ":copy.-1<Cr>gv")
 if vim.o.wrap then
@@ -40,14 +40,13 @@ keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 -- NOTE : Hightlight
 keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
-end)
+end,{noremap = true,desc="Select Highlight"})
 -- NOTE: Telescope
-keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>")
-keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Telescope buffers' })
+keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>",{desc = "Show Todo in Telescope"})
+keymap.set('n', '<Tab>', builtin.buffers, { desc = 'List Buffers' })
 
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>o', '<cmd>:Telescope aerial<CR>')
+vim.keymap.set('n', '<leader>o', '<cmd>:Telescope aerial<CR>',{desc = "Toggle Telescope Aerial"})
 
-vim.api.nvim_set_keymap('n', ':', ':Telescope cmdline<CR>', { noremap = true, desc = "Cmdline",silent = true })
--- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true,silent = true})
+vim.api.nvim_set_keymap('n', ':', ':Telescope cmdline<CR>', { noremap = true, desc = "Show Command Line",silent = true })
