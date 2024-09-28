@@ -48,3 +48,6 @@ keymap.set('n', '<Tab>', builtin.buffers, { desc = 'Telescope buffers' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>o', '<cmd>:Telescope aerial<CR>')
+
+vim.api.nvim_set_keymap('n', ':', ':Telescope cmdline<CR>', { noremap = true, desc = "Cmdline",silent = true })
+-- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true,silent = true})

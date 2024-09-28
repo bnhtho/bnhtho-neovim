@@ -17,7 +17,7 @@ return {
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = { "rafamadriz/friendly-snippets" },
-			},                         -- Snippet engine
+			},                -- Snippet engine
 			"saadparwaiz1/cmp_luasnip", -- LuaSnip source for nvim-cmp
 			"rafamadriz/friendly-snippets", -- Useful snippets
 			"hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
@@ -87,7 +87,7 @@ return {
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "sql" },
+					{ name = "sql",                    keyword_length = 3 },
 					{
 						name = "spell",
 						max_item_count = 5,

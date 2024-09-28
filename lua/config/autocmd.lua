@@ -56,4 +56,11 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     pattern = "*",
     command = "nohlsearch"
 })
-
+-- Ref: https://www.reddit.com/r/neovim/comments/130f9jk/automatically_clear_the_command_line/
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+	callback = function()
+		vim.fn.timer_start(1000, function()
+			print(" ")
+		end)
+	end
+})
