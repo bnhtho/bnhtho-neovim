@@ -33,7 +33,7 @@ vim.api.nvim_set_hl(0, 'WinSeparator', { fg = "#292828" })
 vim.api.nvim_set_hl(0, 'WinBar', { bg = "NONE" })
 vim.api.nvim_set_hl(0, 'NormalNC', { bg = "NONE" })
 vim.api.nvim_set_hl(0, 'WinBarNC', { bg = "NONE" })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828" })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = "#292828" })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
 -- NOTE: Incline
 vim.api.nvim_set_hl(0, 'InclineNormal', { bg = 'NONE', fg = '#80AA9E' })
