@@ -84,5 +84,9 @@ return
 	{
 		'stevearc/dressing.nvim',
 		opts = {},
-	},
-	} 
+	},	
+	{
+		'christopher-francisco/tmux-status.nvim',
+		opts = {},
+	},	
+} 
