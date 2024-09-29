@@ -2,39 +2,12 @@
 
 return
 {
-	-- mini.move
-	{
-		'echasnovski/mini.move',
-		version = false,
-		config = function()
-			require('mini.move').setup({
-				-- Rebind mapping
-				mappings = {
-					-- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-					left = '<M-Left>',
-					right = '<M-Right>',
-					down = '<M-Down>',
-					up = '<M-Up>',
-
-					-- Move current line in Normal mode
-					line_left = '<M-Left>',
-					line_right = '<M-Right>',
-					line_down = '<M-Down>',
-					line_up = '<M-Up>',
-				},
-			}
-			)
-		end
-	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
 	},
-	{ 'echasnovski/mini.bufremove', version = '*',   opts = {} },
-	{ 'echasnovski/mini.pairs',     version = false, opts = {} },
-	
 	{
 
 		'folke/todo-comments.nvim',
@@ -63,9 +36,7 @@ return
 			require('Comment').setup()
 		end
 	},
-	{ 'echasnovski/mini.hipatterns', version = '*', opts = {} },
 	
-	-- Ripgrep
 	{
 		"chrisgrieser/nvim-rip-substitute",
 		cmd = "RipSubstitute",
@@ -78,15 +49,10 @@ return
 			},
 		},
 	},
-	-- lazy.nvim
 	{
 		'stevearc/dressing.nvim',
 		opts = {},
 	},	
-	{
-		'christopher-francisco/tmux-status.nvim',
-		opts = {},
-	},
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
@@ -113,6 +79,8 @@ return
 		  { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 		  { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 		},
-	}
+	},
+
+	
 }	
 

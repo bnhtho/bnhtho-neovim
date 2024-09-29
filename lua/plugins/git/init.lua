@@ -1,9 +1,11 @@
---author:Thohnb
--- What to do: Git system
 return {
-	-- Git signs
+	-- ╔═══════════════════════╗
+    -- ║    Git Sign           ║
+    -- ╚═══════════════════════╝
 	{ "lewis6991/gitsigns.nvim", version = "*", opts = {} },
-	-- Git Lazy
+	-- ╔═══════════════════════╗
+    -- ║    Git Lazy           ║
+    -- ╚═══════════════════════╝
 	{
 		"kdheepak/lazygit.nvim",
 		cmd = {

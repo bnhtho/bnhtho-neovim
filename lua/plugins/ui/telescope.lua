@@ -2,8 +2,12 @@ return {
 	'nvim-telescope/telescope.nvim',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
+				-- ╔═══════════════════════╗
+    			-- ║    Extension          ║
+    			-- ╚═══════════════════════╝
 		'jonarrien/telescope-cmdline.nvim',
 		"LinArcX/telescope-command-palette.nvim",
+		{"stevearc/aerial.nvim"},opts ={},
 	},
 	opts = function()
 		local actions = require('telescope.actions')

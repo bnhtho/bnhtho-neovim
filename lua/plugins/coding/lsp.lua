@@ -1,5 +1,7 @@
 return {
-    -- Setup Mason
+    -- ╔═══════════════════════╗
+    -- ║    Mason              ║
+    -- ╚═══════════════════════╝
     {
         "williamboman/mason.nvim",
         dependencies = {
@@ -17,7 +19,9 @@ return {
             },
         },
     },
-    -- Mason+LSPConfig Setup
+    -- ╔═══════════════════════╗
+    -- ║    Mason LSP Config   ║
+    -- ╚═══════════════════════╝
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "neovim/nvim-lspconfig" },
@@ -32,5 +36,24 @@ return {
                 "stimulus_ls"
             }
         }
+    },
+    -- ╔═══════════════════════╗
+    -- ║    Formatter          ║
+    -- ╚═══════════════════════╝
+    {
+        'stevearc/conform.nvim',
+        opts = {
+            formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "black" },
+                rust = { "rustfmt", lsp_format = "fallback" },
+                javascript = { "prettierd", "prettier", stop_after_first = true },
+            },
+            --
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_format = "fallback",
+            },
+        },
     }
 }
