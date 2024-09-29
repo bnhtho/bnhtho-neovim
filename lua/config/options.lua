@@ -1,7 +1,6 @@
--- author: thohnb
--- Options for Neovim (Global)
--- Kickstart Ref:
--- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+-- ╔═══════════════════════╗
+-- ║ Options               ║
+-- ╚═══════════════════════╝
 local global = vim.g
 local options = vim.opt
 vim.cmd.colorscheme('gruvbox-material')
@@ -38,12 +37,12 @@ options.mousemodel = 'extend'
 options.splitright = true
 options.splitbelow = true
 
-local hipatterns = require('mini.hipatterns')
-hipatterns.setup({
-	highlighters = {
-		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-		hex_color = hipatterns.gen_highlighter.hex_color(),
-	},
-})
+-- local hipatterns = require('mini.hipatterns')
+-- hipatterns.setup({
+-- 	highlighters = {
+-- 		-- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+-- 		hex_color = hipatterns.gen_highlighter.hex_color(),
+-- 	},
+-- })
 
 options.hlsearch = true
