@@ -1,18 +1,19 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	dependencies = {
-		-- ╔═══════════════════════╗
-    	-- ║    dependencies       ║
-    	-- ╚═══════════════════════╝
+-- ╔═══════════════════════╗
+-- ║    dependencies       ║
+-- ╚═══════════════════════╝
+		
 		'nvim-lua/plenary.nvim',
 		{
 			'stevearc/dressing.nvim',
 			opts = {},
 		},	
-		-- ╔═══════════════════════╗
-    	-- ║    Extension          ║
-    	-- ╚═══════════════════════╝
-		'jonarrien/telescope-cmdline.nvim',
+-- ╔═══════════════════════╗
+-- ║    Extensions         ║
+-- ╚═══════════════════════╝
+'jonarrien/telescope-cmdline.nvim',
 		"LinArcX/telescope-command-palette.nvim",
 		{"stevearc/aerial.nvim",opts ={}},
 	},
@@ -69,9 +70,9 @@ return {
 		}
 	end,
 	config = function(_, opts)
-		-- ╔═══════════════════════╗
-    	-- ║    Load Extension     ║
-    	-- ╚═══════════════════════╝
+-- ╔═══════════════════════╗
+-- ║    Load Extensions    ║
+-- ╚═══════════════════════╝
 		require('telescope').setup(opts)
 		require('telescope').load_extension('cmdline')
 		require('telescope').load_extension('aerial')
