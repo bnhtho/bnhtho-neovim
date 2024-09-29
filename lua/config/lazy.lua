@@ -29,8 +29,8 @@ require("lazy").setup({
     { import = "plugins/ui" },
     -- Coding section: treesitter
     { import = "plugins/coding" },
-    -- Utils
-    { import = "plugins/utils" },
+    -- Editor
+    { import = "plugins/editor" },
     -- Git
     { import = "plugins/git" },
     -- Mini

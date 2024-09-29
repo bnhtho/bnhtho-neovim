@@ -1,15 +1,20 @@
--- What to do: add some utils plugins (usually small- default config)
 
 return
 {
 
+
 	{
+		-- ╔═══════════════════════╗
+		-- ║    Blank Line         ║
+		-- ╚═══════════════════════╝
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
 	},
 	{
-
+		-- ╔═══════════════════════╗
+		-- ║    Todo comment       ║
+		-- ╚═══════════════════════╝
 		'folke/todo-comments.nvim',
 		event = 'VimEnter',
 		dependencies = { 'nvim-lua/plenary.nvim' },
@@ -30,14 +35,11 @@ return
 			},
 		}
 	},
-	{
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	},
 	
 	{
+		-- ╔═══════════════════════╗
+		-- ║  nvim-rip-substitute  ║
+		-- ╚═══════════════════════╝
 		"chrisgrieser/nvim-rip-substitute",
 		cmd = "RipSubstitute",
 		keys = {
@@ -49,10 +51,9 @@ return
 			},
 		},
 	},
-	{
-		'stevearc/dressing.nvim',
-		opts = {},
-	},	
+		-- ╔═══════════════════════╗
+		-- ║ 		Flash		   ║
+		-- ╚═══════════════════════╝
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
