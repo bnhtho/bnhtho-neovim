@@ -43,3 +43,10 @@ highlight(0, 'InclineNormal', { bg = 'NONE', fg = '#80AA9E' })
 -- NOTE: Highlight hlnes
 highlight(0, 'HlSearchLens', { fg = 'darkgray' })
 highlight(0, 'HlSearchLensNear', { fg = 'darkgray' })
+-- vim.api.nvim_set_hl(0, 'MiniJump2dSpot', { sp = 'Red', undercurl = true })
+
+
+-- //NOTE: Flash
+highlight(0, 'FlashLabel', { bg = 'NONE', fg= '#D89639',underline = false})
+
+--
