@@ -84,4 +84,53 @@ function M.pick_todo()
 		end)
 end
 
+
+-- Make lualine transparent
+M.theme = function()
+    local colors = {
+        material_transparent = "#292828",
+        darkgray = "#fffff",
+        gray = "#fffff",
+        innerbg = nil,
+        outerbg = "#16161D",
+        normal = "#7e9cd8",
+        insert = "#98bb6c",
+        visual = "#ffa066",
+        replace = "#e46876",
+        command = "#e6c384",
+    }
+    return {
+        inactive = {
+            a = { fg = colors.gray, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.gray, bg = colors.material_transparent },
+            c = { fg = colors.gray, bg = colors.material_transparent },
+        },
+        visual = {
+            a = { fg = colors.visual, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.darkgray, bg = colors.material_transparent },
+            c = { fg = colors.darkgray, bg = colors.material_transparent },
+        },
+        replace = {
+            a = { fg = colors.replace, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.darkgray, bg = colors.material_transparent },
+            c = { fg = colors.darkgray, bg = colors.material_transparent },
+        },
+        normal = {
+            a = { fg = colors.normal, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.darkgray, bg = colors.material_transparent },
+            c = { fg = colors.darkgray, bg = colors.material_transparent },
+        },
+        insert = {
+            a = { fg = colors.insert, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.darkgray, bg = colors.material_transparent },
+            c = { fg = colors.darkgray, bg = colors.material_transparent },
+        },
+        command = {
+            a = { fg = colors.command, bg = colors.material_transparent, gui = "bold" },
+            b = { fg = colors.darkgray, bg = colors.material_transparent },
+            c = { fg = colors.darkgray, bg = colors.material_transparent },
+        },
+    }
+end
+-- end
 return M

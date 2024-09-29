@@ -9,9 +9,9 @@ return {
 		'saifulapm/neotree-file-nesting-config',
 		"s1n7ax/nvim-window-picker",
 	},
-
 	opts = {
-
+		-- Disable lsp on neotree
+		enable_diagnostics = false,
 		-- Windows Mapping
 		window = {
 			width = 40,
