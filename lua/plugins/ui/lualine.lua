@@ -1,4 +1,4 @@
-local transparent_theme = require('config.functions')
+local transparent_theme = require('config.utils')
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = {{'nvim-tree/nvim-web-devicons'},{"christopher-francisco/tmux-status.nvim",

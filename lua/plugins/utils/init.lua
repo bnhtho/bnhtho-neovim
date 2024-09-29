@@ -57,14 +57,12 @@ return
 			},
 		}
 	},
-	-- NOTE : Comment
 	{
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
 		end
 	},
-	-- NOTE: mini.hi
 	{ 'echasnovski/mini.hipatterns', version = '*', opts = {} },
 	
 	-- Ripgrep

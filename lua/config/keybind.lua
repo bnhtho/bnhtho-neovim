@@ -1,7 +1,7 @@
 -- /lua/map.lua
 
 local keymap = vim.keymap
-local custom_key = require('config.functions')
+local custom_key = require('config.utils')
 local builtin = require('telescope.builtin')
 keymap.set("n", "<leader>a", "gg<S-v>G", { desc = "Select All" })
 
@@ -12,8 +12,8 @@ keymap.set("n", "<leader>k", "<C-w>k", { desc = "Focus Upper Window" })
 keymap.set("n", "<leader>l", "<C-w>l", { desc = "Focus Right Window" })
 
 -- -- Split windows
--- keymap.set('n', 'sj', ':split<cr><C-w>w', { desc = "Split Down" })
--- keymap.set('n', 'sl', ':vsplit<cr><C-w>w', { desc = "Split Right" })
+keymap.set('n', 'sj', ':split<cr><C-w>w', { desc = "Split Down" })
+keymap.set('n', 'sl', ':vsplit<cr><C-w>w', { desc = "Split Right" })
 -- Buffer split
 keymap.set('n', 'L', '<cmd>:bprev<cr>', { noremap = false, silent = true }, { desc = "Switch To Last Buffer" })
 keymap.set('n', 'H', '<cmd>:bnext<cr>', { noremap = false, silent = true }, { desc = "Switch To Next Buffer" })
@@ -35,13 +35,13 @@ if vim.o.wrap then
 	keymap.set("n", "j", [[v:count ? 'j' : 'gj']], { expr = true })
 	keymap.set("n", "k", [[v:count ? 'k' : 'gk']], { expr = true })
 end
+
 keymap.set('n', 'q:', function() end)
 keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
--- NOTE : Hightlight
 keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
 end, { noremap = true, desc = "Select Highlight" })
--- NOTE: Telescope
+
 keymap.set('n', '<Tab>', builtin.buffers, { desc = 'List Buffers' })
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>", { desc = "Show Todo in Telescope" })
 

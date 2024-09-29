@@ -1,12 +1,11 @@
--- author:thohnb
--- autocmd.lua
--- Yank
+-- ╔═══════════════════════╗
+-- ║    Autocmds           ║
+-- ╚═══════════════════════╝
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local fn = vim.fn
--- General Settings
 local general = augroup("General", { clear = true })
----- Setup
+-- Hight when yanking
 vim.api.nvim_create_autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -15,8 +14,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
-
--- https://github.com/echasnovski/mini.nvim/discussions/33
 -- Disable noname buffer
 local unlist_unnamed = function(data)
 	local buf = data.buf
@@ -43,24 +40,9 @@ autocmd("BufEnter", {
 	group = general,
 	desc = "Disable New Line Comment",
 })
--- This cursor will stop
+-- Return cursor last buffer location
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 	desc = 'return cursor to where it was last time closing the file',
 	pattern = '*',
 	command = 'silent! normal! g`"zv',
-})
-
-
--- Create an autocmd to clear search highlights on exiting Neovim
-vim.api.nvim_create_autocmd("VimLeavePre", {
-    pattern = "*",
-    command = "nohlsearch"
-})
--- Ref: https://www.reddit.com/r/neovim/comments/130f9jk/automatically_clear_the_command_line/
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-	callback = function()
-		vim.fn.timer_start(1000, function()
-			print(" ")
-		end)
-	end
 })
