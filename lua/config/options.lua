@@ -42,4 +42,3 @@ options.updatetime = 200
 -- ╚═══════════════════════╝
 options.mousescroll = "ver:0,hor:0"
 options.mousemodel = 'extend'
-

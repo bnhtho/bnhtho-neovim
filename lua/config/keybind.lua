@@ -17,7 +17,11 @@ keymap.set("n", "<leader>l", "<C-w>l", { desc = "Focus Right Window" })
 
 -- Select All Text
 keymap.set("n", "<leader>a", "gg<S-v>G", { desc = "Select All" })
-keymap.set("n", "<C-s>", ":w<cr>", { desc = "Save File" })
+-- keymap.set("n", "<C-s>", "silent ! wa'!<cr>", { desc = "Save File" })
+keymap.set('n', '<C-s>', function()
+	custom_key.custom_save()
+end, { noremap = true, desc = "Save file" })
+
 -- Split windows
 keymap.set('n', 'sj', ':split<cr><C-w>w', { desc = "Split Down" })
 keymap.set('n', 'sl', ':vsplit<cr><C-w>w', { desc = "Split Right" })
@@ -44,7 +48,7 @@ keymap.set('n', 'q:', function() end)
 -- ║    Telescope          ║
 -- ╚═══════════════════════╝
 
-keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Find Files in current buffer' })
+keymap.set('n', '<leader><leader>', "<cmd>Telescope file_browser<cr>", { desc = 'Find Files in current buffer' })
 keymap.set('n', '<leader>g', builtin.grep_string, { desc = 'Enable Grep String' })
 keymap.set("n", "<leader>h", "<cmd>TodoTelescope<cr>", { desc = "Show Todo in Telescope" })
 keymap.set('n', '<leader>o', '<cmd>:Telescope aerial<CR>', { desc = "Toggle Telescope Aerial" })

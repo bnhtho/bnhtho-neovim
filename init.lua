@@ -12,3 +12,4 @@ require("config.autocmd")
 require("config.keybind")
 require("config.highlight")
 require("config.lspconfig")
+

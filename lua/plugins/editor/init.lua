@@ -1,6 +1,19 @@
 return
 {
-
+	-- ╔═══════════════════════╗
+	-- ║    Notify             ║
+	-- ╚═══════════════════════╝
+	{
+		"rcarriga/nvim-notify",
+		config = function ()
+		  require("notify").setup {
+			render = "minimal",
+			timeout = 3000,
+		  }
+		  vim.notify = require('notify')
+		end
+	},
+	--
 	{
 		-- ╔═══════════════════════╗
 		-- ║    Blank Line         ║
@@ -49,6 +62,17 @@ return
 			},
 		},
 	},
+	{
+		-- ╔═══════════════════════╗
+		-- ║  Rainbow delimeter    ║
+		-- ╚═══════════════════════╝
+		"HiPhish/rainbow-delimiters.nvim",
+		-- cmd = "",
+
+		config = function()
+			require("rainbow-delimiters.setup").setup()
+		end
+	},
 	-- ╔═══════════════════════╗
 	-- ║ 		Flash      ║
 	-- ╚═══════════════════════╝
@@ -70,7 +94,6 @@ return
 				end,
 			}
 		},
-		-- stylua: ignore
 		keys = {
 			{ "/",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
 			{ "?",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },

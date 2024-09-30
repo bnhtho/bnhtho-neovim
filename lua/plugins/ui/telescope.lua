@@ -1,21 +1,22 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	dependencies = {
--- ╔═══════════════════════╗
--- ║    dependencies       ║
--- ╚═══════════════════════╝
-		
+		-- ╔═══════════════════════╗
+		-- ║    dependencies       ║
+		-- ╚═══════════════════════╝
+
 		'nvim-lua/plenary.nvim',
 		{
 			'stevearc/dressing.nvim',
 			opts = {},
-		},	
--- ╔═══════════════════════╗
--- ║    Extensions         ║
--- ╚═══════════════════════╝
-'jonarrien/telescope-cmdline.nvim',
+		},
+		-- ╔═══════════════════════╗
+		-- ║    Extensions         ║
+		-- ╚═══════════════════════╝
+		'jonarrien/telescope-cmdline.nvim',
 		"LinArcX/telescope-command-palette.nvim",
-		{"stevearc/aerial.nvim",opts ={}},
+		"nvim-telescope/telescope-file-browser.nvim", -- file browser
+		{ "stevearc/aerial.nvim", opts = {} },
 	},
 	opts = function()
 		local actions = require('telescope.actions')
@@ -66,16 +67,24 @@ return {
 					},
 				},
 				--
+				file_browser = {
+					theme = "dropdown",
+					hijack_netrw = true,
+					previewer = false,
+					-- Disable git
+					git_status = false,
+					display_stat = false,
+				},
 			},
 		}
 	end,
 	config = function(_, opts)
--- ╔═══════════════════════╗
--- ║    Load Extensions    ║
--- ╚═══════════════════════╝
+		-- ╔═══════════════════════╗
+		-- ║    Load Extensions    ║
+		-- ╚═══════════════════════╝
 		require('telescope').setup(opts)
 		require('telescope').load_extension('cmdline')
 		require('telescope').load_extension('aerial')
+		require("telescope").load_extension("file_browser")
 	end
 }
-
