@@ -32,6 +32,7 @@ end
 -- Disable virtual text
 vim.diagnostic.config({
 	virtual_text = false,
+	float = { border = "rounded" },
 })
 local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 for type, icon in pairs(signs) do
@@ -41,8 +42,8 @@ end
 -- Floating diagnostic
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-  callback = function ()
-    vim.diagnostic.open_float(nil, {focus=false})
-  end
+	group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+	callback = function()
+		vim.diagnostic.open_float(nil, { focus = false })
+	end
 })

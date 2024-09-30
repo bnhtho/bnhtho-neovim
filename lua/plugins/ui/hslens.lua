@@ -50,14 +50,14 @@ return {
           if nearest then
             local cnt = #posList
             if indicator ~= '' then
-              text = ('[%s]'):format(indicator, idx, cnt)
+              text = ('  %s'):format(indicator, idx, cnt)
             else
                 -- current symbol
               text = ('[You are here]'):format(idx, cnt)
             end
             chunks = {{' ', 'HlSearchLens'}, {text, 'HlSearchLensNear'}}
           else
-            text = ('[Press %s]'):format(indicator, idx)
+            text = ('  %s'):format(indicator, idx)
             chunks = {{' ', 'HlSearchLens'}, {text, 'HlSearchLens'}}
           end
           render.setVirt(0, lnum - 1, col - 1, chunks, nearest)

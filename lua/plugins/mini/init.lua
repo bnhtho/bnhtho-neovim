@@ -71,4 +71,12 @@ return {
         },
       },
     },
+    -- ╔═══════════════════════╗
+    -- ║    Mini Tab Line      ║
+    -- ╚═══════════════════════╝
+    { 'echasnovski/mini.tabline', version = false,
+    opts = {
+            
+    }
+  }
 }

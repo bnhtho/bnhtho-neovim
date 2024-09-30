@@ -4,23 +4,22 @@ return {
 	{
 		"yioneko/nvim-cmp",
 		branch = "perf",
-		event = { "BufReadPre", "BufNewFile" }, -- The main completion plugin
+		event = { "BufReadPre", "BufNewFile" }, 
 		dependencies = {
-			-- Sources
-			"hrsh7th/cmp-nvim-lsp", -- LSP source for nvim-cmp
-			"kdheepak/cmp-latex-symbols",
-			"hrsh7th/cmp-buffer", -- Buffer source for nvim-cmp
-			"hrsh7th/cmp-path", -- Path source for nvim-cmp
-			"ray-x/cmp-sql", -- SQL,
-
-			"hrsh7th/cmp-cmdline", -- Cmdline source for nvim-cmp
+-- ╔═══════════════════════╗
+-- ║    Sources/UI         ║
+-- ╚═══════════════════════╝
+			"hrsh7th/cmp-nvim-lsp", 
+			"hrsh7th/cmp-buffer", 
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = { "rafamadriz/friendly-snippets" },
-			},                -- Snippet engine
-			"saadparwaiz1/cmp_luasnip", -- LuaSnip source for nvim-cmp
-			"rafamadriz/friendly-snippets", -- Useful snippets
-			"hrsh7th/cmp-nvim-lsp-signature-help", -- signature help
+			},               
+			"saadparwaiz1/cmp_luasnip", 
+			"rafamadriz/friendly-snippets",
+			"hrsh7th/cmp-nvim-lsp-signature-help", 
 			-- Customize Appearance
 			"onsails/lspkind.nvim"
 		},
@@ -71,6 +70,9 @@ return {
 						require('luasnip').lsp_expand(args.body) -- For luasnip users
 					end
 				},
+				-- ╔═══════════════════════╗
+				-- ║    Sources Setup	   ║
+				-- ╚═══════════════════════╝
 				matching = {
 					disallow_fuzzy_matching = true,
 					disallow_fullfuzzy_matching = true,
@@ -81,33 +83,11 @@ return {
 				-- Source
 				sources = {
 					{ name = "luasnip" },
-					{ name = "lazydev",                group_index = 0 },
 					{ name = "nvim_lsp" },
 					{ name = "path" },
 					{ name = "nvim_lua" },
 					{ name = "buffer" },
 					{ name = "nvim_lsp_signature_help" },
-					{ name = "sql",                    keyword_length = 3 },
-					{
-						name = "spell",
-						max_item_count = 5,
-						keyword_length = 3,
-						option = {
-							keep_all_entries = false,
-							enable_in_context = function()
-								return true
-							end,
-						},
-					},
-					{
-						name = "latex_symbols",
-						max_item_count = "15",
-						keyword_length = "1",
-
-						option = {
-							strategy = 0, -- mixed
-						},
-					},
 				},
 				--
 				formatting = {

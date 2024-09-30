@@ -24,8 +24,8 @@ keymap.set('n', 'sj', ':split<cr><C-w>w', { desc = "Split Down" })
 keymap.set('n', 'sl', ':vsplit<cr><C-w>w', { desc = "Split Right" })
 
 -- Buffers
-keymap.set('n', 'L', '<cmd>:bprev<cr>', { noremap = false, silent = true }, { desc = "Switch To Last Buffer" })
-keymap.set('n', 'H', '<cmd>:bnext<cr>', { noremap = false, silent = true }, { desc = "Switch To Next Buffer" })
+keymap.set('n', 'H', '<cmd>:bprev<cr>', { noremap = false, silent = true }, { desc = "Switch To Last Buffer" })
+keymap.set('n', 'L', '<cmd>:bnext<cr>', { noremap = false, silent = true }, { desc = "Switch To Next Buffer" })
 keymap.set("n", "W", "<cmd>:bdelete<cr>", { noremap = false, silent = true, desc = "Delete Current Buffer" })
 
 

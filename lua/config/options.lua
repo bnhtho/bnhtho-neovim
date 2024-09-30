@@ -27,7 +27,7 @@ options.cmdheight = 0
 -- ╚═══════════════════════╝
 options.ignorecase = true
 options.smartcase = true
-options.hlsearch = false
+options.hlsearch = true
 -- ╔═══════════════════════╗
 -- ║ Other                 ║
 -- ╚═══════════════════════╝
