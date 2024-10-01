@@ -2,17 +2,23 @@
 -- ║ LSP Configuration     ║
 -- ╚═══════════════════════╝
 
--- ╔═══════════════════════╗
--- ║ Server LSP            ║
--- ╚═══════════════════════╝
+
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local on_attach = function(_, bufnr)
 	local opts = { buffer = bufnr }
-	-- Keybind when attached lsp
-	vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-	vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+	-- ╔═══════════════════════╗
+	-- ║ 	Keybind            ║
+	-- ╚═══════════════════════╝
+	local map = vim.keymap.set
+	map("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+	map("n", "K", vim.lsp.buf.hover, opts)
+	map('n', '<space>q', vim.diagnostic.setloclist, opts)
+	-- diagnostic
+	map('n', 'dK', "<Cmd>lua MiniBracketed.diagnostic('first')<CR>")
+	map('n', 'dk', "<Cmd>lua MiniBracketed.diagnostic('backward')<CR>")
+	map('n', 'dj', "<Cmd>lua MiniBracketed.diagnostic('forward')<CR>")
+	map('n', 'dJ', "<Cmd>lua MiniBracketed.diagnostic('last')<CR>")
 end
 
 local servers = { "pylsp", "clangd", "marksman", "lua_ls", "sqlls" }
@@ -39,11 +45,3 @@ for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
--- Floating diagnostic
-vim.o.updatetime = 250
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-	group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
-	callback = function()
-		vim.diagnostic.open_float(nil, { focus = false })
-	end
-})
