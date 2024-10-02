@@ -72,3 +72,9 @@ keymap.set('n', '<leader>t', "<CMD>Neotree toggle <CR>")
 keymap.set('n', '<leader>/', function()
 	custom_key.pick_todo()
 end, { noremap = true, desc = "Select Highlight From Box" })
+
+keymap.set('n', '<leader>sn',
+	function()
+		require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+	end,
+	{ noremap = true, desc = 'Search Neovim Config File' })
