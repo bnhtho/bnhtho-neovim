@@ -36,7 +36,8 @@
 | <kbd>Control-k</kbd> | Normal | [Tmux] Navigator Upper Windows |
 | <kbd>Control-j</kbd> | Normal | [Tmux] Navigator Below Windows |
 | <kbd>Leader-t</kbd> | Normal | [Neotree] Toggle Neotree |
-| <kbd>Leader-/</kbd> | Normal | [Custom Function] Toggle Todo Selection |
+| <kbd>/</kbd> | Normal | [Flash] Enable Flash Search|
+| <kbd>?</kbd> | Normal | [Flash] Treesitter Search |
 
 ### LSP 💻 
 
