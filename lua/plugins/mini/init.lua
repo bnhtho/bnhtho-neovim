@@ -58,7 +58,7 @@ return {
 		version = false,
 		opts = {
 			modes = { insert = true, command = false, terminal = false },
-			
+
 		},
 	},
 	-- ╔═══════════════════════╗
@@ -71,18 +71,19 @@ return {
 	},
 	-- ╔═══════════════════════╗
 	-- ║    Mini Brackedted    ║
-	-- ╚═══════════════════════╝
+	-- ╚═══════════════════════
 	{
 		'echasnovski/mini.bracketed',
 		version = false,
 		config = function()
 			local bracketed = require("mini.bracketed")
-			local ignore_suffix = {"buffer","conflict", "file", "indent", "jump", "location", "oldfile", "quickfix", "treesitter", "undo", "window", "yank" }
-			
+			local ignore_suffix = { "buffer", "conflict", "file", "indent", "jump", "location", "oldfile", "quickfix",
+				"treesitter", "undo", "window", "yank" }
+
 			local config = {}
 			-- Loop through each suffix and disable it in the config
 			for _, disable_suffix in ipairs(ignore_suffix) do
-				config[disable_suffix] = { suffix = '' }  -- Disable the mapping by setting an empty suffix
+				config[disable_suffix] = { suffix = '' } -- Disable the mapping by setting an empty suffix
 			end
 			bracketed.setup(config)
 		end,

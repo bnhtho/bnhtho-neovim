@@ -4,22 +4,22 @@ return {
 	{
 		"yioneko/nvim-cmp",
 		branch = "perf",
-		event = { "BufReadPre", "BufNewFile" }, 
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
--- ╔═══════════════════════╗
--- ║    Sources/UI         ║
--- ╚═══════════════════════╝
-			"hrsh7th/cmp-nvim-lsp", 
-			"hrsh7th/cmp-buffer", 
+			-- ╔═══════════════════════╗
+			-- ║    Sources/UI         ║
+			-- ╚═══════════════════════╝
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			{
 				"L3MON4D3/LuaSnip",
 				dependencies = { "rafamadriz/friendly-snippets" },
-			},               
-			"saadparwaiz1/cmp_luasnip", 
+			},
+			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
-			"hrsh7th/cmp-nvim-lsp-signature-help", 
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			-- Customize Appearance
 			"onsails/lspkind.nvim"
 		},
@@ -53,7 +53,6 @@ return {
 				TypeParameter = "",
 			}
 			--
-			local lspkind = require('lspkind')
 			local cmp = require('cmp')
 			local cmplsp = require("cmp_nvim_lsp")
 			local luasnip = require("luasnip")

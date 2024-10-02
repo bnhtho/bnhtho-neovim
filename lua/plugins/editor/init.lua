@@ -101,6 +101,17 @@ return
 			{ "R", mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
 		},
 	},
-
-
+	{
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		opts = {
+			-- add any custom options here
+		},
+	},
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			vim.keymap.set({ "v", "n" }, "gf", require("actions-preview").code_actions)
+		end,
+	}
 }
