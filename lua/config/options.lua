@@ -11,6 +11,8 @@ options.fillchars = { eob = " " }
 vim.cmd.colorscheme('gruvbox-material')
 options.termguicolors = true
 options.number = true
+options.shiftwidth = 4
+options.softtabstop = 4
 -- ╔═══════════════════════╗
 -- ║ Split                 ║
 -- ╚═══════════════════════╝

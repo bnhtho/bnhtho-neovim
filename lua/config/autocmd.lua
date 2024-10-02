@@ -58,15 +58,12 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 	end
 })
 
-
 -- Filetype Python
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	callback = function()
 		local options = vim.opt
 		options.expandtab = true
-		options.shiftwidth = 4
-		options.softtabstop = 4
 		options.autoindent = true
 
 	end,
