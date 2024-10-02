@@ -1,6 +1,4 @@
-## bnhtho/neovim's readme
-This is my readme for my personal neovim configs
-## Keymaps
+## Keymaps ⌨️
 ### Built-in Neovim
 
 | Keyboard            | Modes  | Function           |
@@ -19,7 +17,7 @@ This is my readme for my personal neovim configs
 | <kbd>W</kbd> | Normal | Delete Current/Focus Buffer |
 
 
-### Telescope 
+### Telescope 🔭 
 
 | Keyboard            | Modes  | Function           |
 |---------------------|--------|--------------------|
@@ -29,7 +27,7 @@ This is my readme for my personal neovim configs
 | <kbd>Leader-o</kbd> | Normal | Toggle highlight |
 | <kbd>:</kbd> | Normal | Toggle Command Line |
 
-### Plugins
+### Plugins 🔧
 
 | Keyboard            | Modes  | Function           |
 |---------------------|--------|--------------------|
@@ -39,6 +37,17 @@ This is my readme for my personal neovim configs
 | <kbd>Control-j</kbd> | Normal | [Tmux] Navigator Below Windows |
 | <kbd>Leader-t</kbd> | Normal | [Neotree] Toggle Neotree |
 | <kbd>Leader-/</kbd> | Normal | [Custom Function] Toggle Todo Selection |
+
+### LSP 💻 
+
+| Keyboard            | Modes  | Function           |
+|---------------------|--------|--------------------|
+| <kbd>gR</kbd> | Normal | [Telescope] Show References |
+| <kbd>K</kbd> | Normal | Hover to show info |
+| <kbd>dK</kbd> | Normal |[Mini.Bracketed] Move to First Diagnostic |
+| <kbd>dk</kbd> | Normal |[Mini.Bracketed] Move To Previous Diagnostic |
+| <kbd>dj</kbd> | Normal |[Mini.Bracketed] Move To Next Diagnostic|
+| <kbd>dJ</kbd> | Normal |[Mini.Bracketed] Move to Last Diagnostic|
 
 
 
