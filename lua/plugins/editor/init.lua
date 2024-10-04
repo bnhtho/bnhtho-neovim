@@ -4,6 +4,9 @@ return
 	-- ║    Notify             ║
 	-- ╚═══════════════════════╝
 	{
+		"famiu/bufdelete.nvim"
+	},
+	{
 		"rcarriga/nvim-notify",
 		config = function()
 			require("notify").setup {
@@ -27,6 +30,10 @@ return
 				},
 				indent = {
 					enable = true
+				},
+
+				line_num = {
+					enable = true,
 				}
 			})
 		end

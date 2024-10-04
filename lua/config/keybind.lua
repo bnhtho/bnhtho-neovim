@@ -29,8 +29,19 @@ keymap.set('n', 'sl', ':vsplit<cr><C-w>w', { desc = "Split Right" })
 -- Buffers
 keymap.set('n', 'H', '<cmd>:bprev<cr>', { noremap = false, silent = true }, { desc = "Switch To Last Buffer" })
 keymap.set('n', 'L', '<cmd>:bnext<cr>', { noremap = false, silent = true }, { desc = "Switch To Next Buffer" })
-keymap.set("n", "W", "<cmd>:bdelete<cr>", { noremap = false, silent = true, desc = "Delete Current Buffer" })
+vim.keymap.set("n", "W", function()
+		-- Get the current buffer filetype
+		local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
+		-- If the current buffer is the Alpha dashboard, prevent deletion
+		if filetype == "alpha" then
+			return
+		end
+
+		-- Otherwise, delete the buffer
+		require('bufdelete').bufdelete(0, true)
+	end,
+	{ noremap = true, silent = true, desc = "Delete Current Buffer" })
 
 keymap.set("v", ">", ">gv")
 keymap.set("v", "<", "<gv")

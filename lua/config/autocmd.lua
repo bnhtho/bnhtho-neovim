@@ -68,3 +68,43 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 	group = indentSettings,
 })
+
+
+-- need bufdelete.nvim, neo-tree & alpha-dashboard
+local alpha_on_empty = vim.api.nvim_create_augroup("alpha_on_empty", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+	pattern = "BDeletePost*",
+	group = alpha_on_empty,
+	callback = function(event)
+		local current_buf = vim.api.nvim_get_current_buf()
+		local current_ft = vim.api.nvim_buf_get_option(current_buf, "filetype")
+
+		-- If the current buffer is displaying the Alpha dashboard, do not delete it
+		if current_ft == "alpha" then
+			return
+		end
+		local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+		local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+		local fallback_on_empty = fallback_name == "" and fallback_ft == ""
+
+		if fallback_on_empty then
+			require("neo-tree").close_all()
+			vim.cmd("Alpha")
+			vim.cmd(event.buf .. "bwipeout")
+		end
+	end,
+})
+
+vim.opt.clipboard = "unnamedplus"
+
+if vim.fn.has("wsl") == 1 then
+	vim.api.nvim_create_autocmd(
+		"TextYankPost",
+		{
+			group = vim.api.nvim_create_augroup("Yank", { clear = true }),
+			callback = function()
+				vim.fn.system("clip.exe", vim.fn.getreg('"'))
+			end
+		}
+	)
+end

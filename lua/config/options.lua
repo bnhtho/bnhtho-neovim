@@ -2,17 +2,18 @@
 -- ║ Options               ║
 -- ╚═══════════════════════╝
 -- Local Variables
-local global = vim.g
 local options = vim.opt
+vim.cmd.colorscheme('gruvbox-material')
 -- ╔═══════════════════════╗
 -- ║ UI                    ║
 -- ╚═══════════════════════╝
 options.fillchars = { eob = " " }
-vim.cmd.colorscheme('gruvbox-material')
 options.termguicolors = true
-options.number = true
 options.shiftwidth = 4
 options.softtabstop = 4
+options.number = true
+options.relativenumber = true
+
 -- ╔═══════════════════════╗
 -- ║ Split                 ║
 -- ╚═══════════════════════╝
